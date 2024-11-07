@@ -45,10 +45,10 @@
     border-radius: 5px;
     border: 2px solid black;
     background-color: transparent;
-    width: 64%;
+    width: 22vw;
     height: 8%;
     margin-bottom: 10px;
-    padding-left: 10px;
+    padding-left: 33px;
     padding-right: 10px;
     font-size: 1.3rem;
     color: var(--clr-dark-brown);
@@ -56,6 +56,18 @@
 
 .loginInput:focus {
     outline: none;
+}
+
+.loginInput.usrnmLogin {
+    background-image: url(../../assets/ic_acc.svg);
+    background-repeat: no-repeat;
+    background-position: 3%;
+}
+
+.loginInput.passLogin {
+    background-image: url(../../assets/ic_pass.svg);
+    background-repeat: no-repeat;
+    background-position: 3%;
 }
 
 .submitLoginBtn {
