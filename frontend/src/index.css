@@ -1,68 +1,34 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --grad-color-left: #e8cdad;
+  --grad-color-right: #89695D;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --clr-brown: #573721;
+  --clr-light-brown: #ad724a;
+  --clr-dark-brown: #312117;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+@font-face {
+  font-family: 'Feeling Passionate';
+  src: url(../public/fonts/Feeling\ Passionate.otf);
 }
-a:hover {
-  color: #535bf2;
+
+@font-face {
+  font-family: 'Glacial Indifference Regular';
+  src: url(../public/fonts/GlacialIndifference-Regular.otf);
+}
+
+@font-face {
+  font-family: 'Glacial Indifference Bold';
+  src: url(../public/fonts/GlacialIndifference-Bold.otf);
+}
+
+@font-face {
+  font-family: 'Glacial Indifference Italic';
+  src: url(../public/fonts/GlacialIndifference-Italic.otf);
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  padding: 0;
+  font-family: 'Glacial Indifference Regular';
 }
