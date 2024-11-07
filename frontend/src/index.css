@@ -5,26 +5,27 @@
   --clr-brown: #573721;
   --clr-light-brown: #ad724a;
   --clr-dark-brown: #312117;
+  --clr-brown-btn: #c0a484;
 }
 
 @font-face {
   font-family: 'Feeling Passionate';
-  src: url(../public/fonts/Feeling\ Passionate.otf);
+  src: url(/fonts/Feeling\ Passionate.otf);
 }
 
 @font-face {
   font-family: 'Glacial Indifference Regular';
-  src: url(../public/fonts/GlacialIndifference-Regular.otf);
+  src: url(/fonts/GlacialIndifference-Regular.otf);
 }
 
 @font-face {
   font-family: 'Glacial Indifference Bold';
-  src: url(../public/fonts/GlacialIndifference-Bold.otf);
+  src: url(/fonts/GlacialIndifference-Bold.otf);
 }
 
 @font-face {
   font-family: 'Glacial Indifference Italic';
-  src: url(../public/fonts/GlacialIndifference-Italic.otf);
+  src: url(/fonts/GlacialIndifference-Italic.otf);
 }
 
 body {

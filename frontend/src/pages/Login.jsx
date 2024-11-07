@@ -1,18 +1,20 @@
 import './styles/Login.css'
+import Logo from '../assets/header_regex_only.svg'
 
 const Login = () => {
 
     return (
         <main className="loginBody">
-            <h1 className='logoNameL'>RegExpresso</h1>
+            <img src={Logo} alt="" className="logoL" />
             <form action="" className='loginForm'>
-                <h1 className="loginTitle">Login</h1>
+                <h1 className="loginTitle">Welcome Back!</h1>
                 <p className='loginP'>Username</p>
                 <input type="text" className="loginInput usrnmLogin" />
                 <p className='loginP'>Password</p>
                 <input type="password" className="loginInput passLogin" />
+                <button className="submitLoginBtn">Login</button>
+                <p className="loginP signupSwitch">Don't have an account? <a className='signSwitchBtn' href='/signup'>Sign Up!</a></p>
             </form>
-            <p className="loginP signupSwitch">Don't have an account? <a className='signSwitchBtn' href='/signup'>Sign Up!</a></p>
         </main>
     )
 
