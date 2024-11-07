@@ -1,0 +1,127 @@
+.signupBody {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../../assets/bg_create_acc.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+.logoL {
+    margin: 0;
+    margin-left: 2.5vw;
+    margin-top: 1vh;
+    width: 350px;
+    height: 200px;
+    object-fit: contain;
+
+}
+
+.signupForm {
+    display: flex;
+    flex-direction: column;
+    width: 37vw;
+    height: 70vh;
+    margin-left: 2.5vw;
+    margin-top: -2vh;
+}
+
+.signupTitle {
+    margin: 0;
+    font-family: 'Glacial Indifference Bold';
+    font-size: 4rem;
+    color: var(--clr-brown);
+}
+
+.signupP {
+    color: var(--clr-brown);
+    font-family: 'Glacial Indifference Regular';
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.signupInput {
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: transparent;
+    width: 22vw;
+    height: 8%;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 10px;
+    font-size: 1.3rem;
+    color: var(--clr-dark-brown);
+}
+
+.signupInput:focus {
+    outline: none;
+}
+
+.signupInput.usrnmSignup {
+    background-image: url(../../assets/ic_acc.svg);
+    background-repeat: no-repeat;
+    background-position: 3%;
+}
+
+.signupInput.emailSignup {
+    background-image: url(../../assets/ic_email.svg);
+    background-repeat: no-repeat;
+    background-position: 2%;
+
+}
+
+.signupInput.passSignup {
+    background-image: url(../../assets/ic_pass.svg);
+    background-repeat: no-repeat;
+    background-position: 3%;
+}
+
+.signupInput.confPassSignup {
+    background-image: url(../../assets/ic_pass.svg);
+    background-repeat: no-repeat;
+    background-position: 3%;
+}
+
+.submitsignupBtn {
+    width: 25vw;
+    height: 10%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    background-color: var(--clr-brown-btn);
+    border-radius: 5px;
+    border: none;
+    color: var(--clr-brown);
+    font-family: 'Glacial Indifference Regular';
+    font-size: 1.5rem;
+}
+
+.submitsignupBtn:hover {
+    cursor: pointer;
+    background-color: var(--grad-color-right);
+    color: var(--clr-brown-btn);
+}
+
+.signupP.loginSwitch {
+    font-family: 'Glacial Indifference Regular';
+    margin-top: 1.5vh;
+    font-size: 1rem;
+    color: var(--clr-dark-brown);
+    justify-content: center;
+    text-align: center;
+    width: 68%;
+}
+
+.signupP.loginSwitch .logSwitchBtn {
+    font-family: 'Glacial Indifference Bold';
+    color: var(--clr-brown);
+    text-decoration: none;
+}
+
+.signupP.loginSwitch .logSwitchBtn:hover {
+    font-family: 'Glacial Indifference Bold';
+    color: var(--clr-light-brown);
+    cursor: pointer;
+    text-decoration: none;
+}
