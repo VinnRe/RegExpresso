@@ -1,18 +1,19 @@
 .loginBody {
     width: 100vw;
     height: 100vh;
-    background-image: url(../../assets/bg_signup.svg);
+    background-image: url(../../assets/bg_login.svg);
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
 }
 
 .logoL {
     margin: 0;
-    margin-left: 2.5vw;
-    margin-top: 1vh;
-    margin-bottom: 3vh;
+    margin-right: 4vw;
+    margin-top: 8vh;
+    margin-bottom: 2vh;
     width: 350px;
     height: 200px;
     object-fit: contain;
@@ -21,9 +22,10 @@
 .loginForm {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     width: 37vw;
     height: 60vh;
-    margin-left: 2.5vw;
+    margin-right: 4vw;
 }
 
 .loginTitle {
@@ -34,6 +36,7 @@
 }
 
 .loginP {
+    width: 68%;
     color: var(--clr-brown);
     font-family: 'Glacial Indifference Regular';
     font-size: 1.5rem;
@@ -125,4 +128,101 @@
     color: var(--clr-light-brown);
     cursor: pointer;
     text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .loginBody {
+        background-size: cover;
+        background-position: -40vw;
+    }
+
+    .logoL {
+        margin-right: 8vw;
+        margin-top: 15vh;
+        margin-bottom: 2vh;
+        width: 250px;
+        height: 100px;
+    }
+    
+    .loginForm {
+        width: 50vw;
+        height: 60vh;
+        margin-right: 8vw;
+    }
+    
+    .loginTitle {
+        font-size: 3rem;
+    }
+    
+    .loginP {
+        width: 72%;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    
+    .loginInput {
+        width: 60%;
+        height: 10%;
+        font-size: 1.3rem;
+    }
+
+    .submitLoginBtn {
+        width: 72%;
+        height: 12%;
+        font-size: 1.5rem;
+    }
+
+    .loginP.signupSwitch {
+        width: 72%;
+    }
+
+    .conSwitchBtnL {
+        width: 72%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .logoL {
+        margin-right: 4vw;
+        margin-top: 15vh;
+        margin-bottom: 2vh;
+        width: 250px;
+        height: 100px;
+    }
+    
+    .loginForm {
+        width: 50vw;
+        height: 60vh;
+        margin-right: 4vw;
+    }
+    
+    .loginTitle {
+        font-size: 3rem;
+    }
+    
+    .loginP {
+        width: 67%;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    
+    .loginInput {
+        width: 58%;
+        height: 10%;
+        font-size: 1.3rem;
+    }
+
+    .submitLoginBtn {
+        width: 67%;
+        height: 12%;
+        font-size: 1.5rem;
+    }
+
+    .loginP.signupSwitch {
+        width: 67%;
+    }
+
+    .conSwitchBtnL {
+        width: 67%;
+    }
 }
