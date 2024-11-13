@@ -6,7 +6,7 @@ const Signup = () => {
 
     return (
         <main className="signupBody">
-            <img src={Logo} alt="" className="logoL" />
+            <img src={Logo} alt="" className="logoS" />
             <form action="" className='signupForm'>
                 <h1 className="signupTitle">Get started.</h1>
                 <p className='signupP'>Username</p>
