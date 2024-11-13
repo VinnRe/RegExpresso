@@ -19,6 +19,7 @@ const Signup = () => {
                 <input type="password" className="signupInput confPassSignup" />
                 <button className="submitsignupBtn">Register</button>
                 <p className="signupP loginSwitch">Already have an account? <a className='logSwitchBtn' href='/login'>Login!</a></p>
+                <a className='conSwitchBtnS' href='/home'>Continue as Guest.</a>
             </form>
         </main>
     )

@@ -16,7 +16,6 @@
     width: 350px;
     height: 200px;
     object-fit: contain;
-
 }
 
 .loginForm {
@@ -107,6 +106,21 @@
 }
 
 .loginP.signupSwitch .signSwitchBtn:hover {
+    font-family: 'Glacial Indifference Bold';
+    color: var(--clr-light-brown);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.conSwitchBtnL {
+    font-family: 'Glacial Indifference Bold';
+    color: var(--clr-brown);
+    text-decoration: none;
+    text-align: center;
+    width: 68%;
+}
+
+.conSwitchBtnL:hover {
     font-family: 'Glacial Indifference Bold';
     color: var(--clr-light-brown);
     cursor: pointer;

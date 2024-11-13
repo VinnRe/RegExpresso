@@ -14,6 +14,7 @@ const Login = () => {
                 <input type="password" className="loginInput passLogin" />
                 <button className="submitLoginBtn">Login</button>
                 <p className="loginP signupSwitch">Don't have an account? <a className='signSwitchBtn' href='/signup'>Sign Up!</a></p>
+                <a className='conSwitchBtnL' href='/home'>Continue as Guest.</a>
             </form>
         </main>
     )

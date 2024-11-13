@@ -125,3 +125,18 @@
     cursor: pointer;
     text-decoration: none;
 }
+
+.conSwitchBtnS {
+    font-family: 'Glacial Indifference Bold';
+    color: var(--clr-brown);
+    text-decoration: none;
+    text-align: center;
+    width: 68%;
+}
+
+.conSwitchBtnS:hover {
+    font-family: 'Glacial Indifference Bold';
+    color: var(--clr-light-brown);
+    cursor: pointer;
+    text-decoration: none;
+}
