@@ -1,7 +1,7 @@
 .loginBody {
     width: 100vw;
     height: 100vh;
-    background-image: url(../../assets/bg_create_acc.svg);
+    background-image: url(../../assets/bg_signup.svg);
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
