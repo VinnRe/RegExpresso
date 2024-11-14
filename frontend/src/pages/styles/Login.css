@@ -10,9 +10,8 @@
 }
 
 .logoL {
-    margin: 0;
     margin-right: 4vw;
-    margin-top: 8vh;
+    margin-top: 1vh;
     margin-bottom: 2vh;
     width: 350px;
     height: 200px;
@@ -22,6 +21,7 @@
 .loginForm {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: flex-end;
     width: 37vw;
     height: 60vh;
@@ -44,15 +44,16 @@
 }
 
 .loginInput {
+    font-family: 'Glacial Indifference Regular';
     border-radius: 5px;
-    border: 2px solid black;
+    border: 1.5px solid black;
     background-color: transparent;
     width: 22vw;
     height: 8%;
     margin-bottom: 10px;
     padding-left: 33px;
     padding-right: 10px;
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: var(--clr-dark-brown);
 }
 
@@ -64,12 +65,14 @@
     background-image: url(../../assets/ic_acc.svg);
     background-repeat: no-repeat;
     background-position: 3%;
+    background-size: 16px 16px;
 }
 
 .loginInput.passLogin {
     background-image: url(../../assets/ic_pass.svg);
     background-repeat: no-repeat;
     background-position: 3%;
+    background-size: 16px 16px;
 }
 
 .submitLoginBtn {
@@ -83,12 +86,13 @@
     border: none;
     color: var(--clr-brown);
     font-family: 'Glacial Indifference Regular';
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    transition: all 0.25s ease-in-out;
 }
 
 .submitLoginBtn:hover {
     cursor: pointer;
-    background-color: var(--grad-color-right);
+    background-color: var(--clr-brown);
     color: var(--clr-brown-btn);
 }
 
@@ -103,16 +107,13 @@
 }
 
 .loginP.signupSwitch .signSwitchBtn {
-    font-family: 'Glacial Indifference Bold';
     color: var(--clr-brown);
     text-decoration: none;
+    transition: color 0.15s ease-in-out;
 }
 
 .loginP.signupSwitch .signSwitchBtn:hover {
-    font-family: 'Glacial Indifference Bold';
     color: var(--clr-light-brown);
-    cursor: pointer;
-    text-decoration: none;
 }
 
 .conSwitchBtnL {

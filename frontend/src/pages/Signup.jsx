@@ -1,6 +1,6 @@
 import './styles/Signup.css'
 import Logo from '../assets/header_regex_only.svg'
-import Acc from '../assets/ic_acc.svg'
+import Divider from '../assets/divider_or.svg'
 
 const Signup = () => {
 
@@ -15,10 +15,11 @@ const Signup = () => {
                 <input type="email" className="signupInput emailSignup" />
                 <p className='signupP'>Password</p>
                 <input type="password" className="signupInput passSignup" />
-                <p className='signupP'>Confirm Password</p>
+                <p className='signupP'>Re-enter Password</p>
                 <input type="password" className="signupInput confPassSignup" />
-                <button className="submitsignupBtn">Register</button>
-                <p className="signupP loginSwitch">Already have an account? <a className='logSwitchBtn' href='/login'>Login!</a></p>
+                <button className="submitsignupBtn">Create account</button>
+                <p className="signupP loginSwitch">Already have an account? <a className='logSwitchBtn' href='/login'>Login</a></p>
+                <img src={Divider} alt="divider" className='divider' />
                 <a className='conSwitchBtnS' href='/home'>Continue as Guest.</a>
             </form>
         </main>
