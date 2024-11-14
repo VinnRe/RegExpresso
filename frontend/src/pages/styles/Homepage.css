@@ -1,0 +1,15 @@
+.homepageBody {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to right, #e8cdad, #89695d);
+    display: flex;
+    flex-direction: column;
+}
+
+.homepageHeader {
+    margin-left: 2.5vw;
+    margin-top: 2.5vh;
+    width: 350px;
+    height: 200px;
+    object-fit: contain;
+}
