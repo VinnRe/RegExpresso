@@ -11,7 +11,7 @@
 
 .logoL {
     margin-right: 4vw;
-    margin-top: 1vh;
+    margin-top: 10vh;
     margin-bottom: 2vh;
     width: 350px;
     height: 200px;
@@ -116,6 +116,10 @@
     color: var(--clr-light-brown);
 }
 
+.dividerL {
+    width: 68%;
+}
+
 .conSwitchBtnL {
     font-family: 'Glacial Indifference Bold';
     color: var(--clr-brown);
@@ -188,7 +192,7 @@
     }
 }
 
-@media (min-width: 601px) and (max-width: 768px) {
+@media (min-width: 601px) and (max-width: 767px) {
     .loginBody {
         background-image: url(../../assets/bg_log_768.svg);
         background-size: cover;

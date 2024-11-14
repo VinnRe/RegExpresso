@@ -15,7 +15,7 @@ const Login = () => {
                 <input type="password" className="loginInput passLogin" />
                 <button className="submitLoginBtn">Login</button>
                 <p className="loginP signupSwitch">Don't have an account? <a className='signSwitchBtn' href='/signup'>Create account</a></p>
-                <img src={Divider} alt="divider" className='divider' />
+                <img src={Divider} alt="divider" className='dividerL' />
                 <a className='conSwitchBtnL' href='/home'>Continue as Guest.</a>
             </form>
         </main>
