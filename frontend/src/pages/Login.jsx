@@ -1,5 +1,6 @@
 import './styles/Login.css'
 import Logo from '../assets/header_regex_only.svg'
+import Divider from '../assets/divider_or.svg'
 
 const Login = () => {
 
@@ -13,7 +14,8 @@ const Login = () => {
                 <p className='loginP'>Password</p>
                 <input type="password" className="loginInput passLogin" />
                 <button className="submitLoginBtn">Login</button>
-                <p className="loginP signupSwitch">Don't have an account? <a className='signSwitchBtn' href='/signup'>Sign Up!</a></p>
+                <p className="loginP signupSwitch">Don't have an account? <a className='signSwitchBtn' href='/signup'>Create account</a></p>
+                <img src={Divider} alt="divider" className='divider' />
                 <a className='conSwitchBtnL' href='/home'>Continue as Guest.</a>
             </form>
         </main>
