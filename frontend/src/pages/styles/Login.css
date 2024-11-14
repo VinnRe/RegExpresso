@@ -130,10 +130,68 @@
     text-decoration: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .loginBody {
+        background-image: none;
+        background-color: var(--grad-color-left);
+        align-items: center;
+        margin-right: 0;
+        overflow: hidden;
+    }
+
+    .logoL {
+        margin-top: 15vh;
+        margin-bottom: 2vh;
+        margin-left: 6vw;
+        width: 100%;
+        height: 100px;
+    }
+    
+    .loginForm {
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        margin-right: 0;
+    }
+    
+    .loginTitle {
+        font-size: 3rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .loginP {
+        width: 70%;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    
+    .loginInput {
+        width: 60%;
+        height: 10%;
+        font-size: 1.3rem;
+    }
+
+    .submitLoginBtn {
+        width: 72%;
+        height: 12%;
+        font-size: 1.5rem;
+    }
+
+    .loginP.signupSwitch {
+        width: 72%;
+    }
+
+    .conSwitchBtnL {
+        width: 72%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+    .loginBody {
+        background-image: url(../../assets/bg_log_768.svg);
         background-size: cover;
-        background-position: -40vw;
+        background-position: -25vw;
     }
 
     .logoL {
@@ -147,7 +205,6 @@
     .loginForm {
         width: 50vw;
         height: 60vh;
-        margin-right: 8vw;
     }
     
     .loginTitle {
@@ -181,7 +238,7 @@
     }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     .logoL {
         margin-right: 4vw;
         margin-top: 15vh;
