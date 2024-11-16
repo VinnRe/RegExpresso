@@ -1,36 +1,124 @@
 .homepageBody {
-    background-color: #e8cdad;
+    background: #e8cdad url(../../assets/bg_main.svg) center/cover no-repeat fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .homepageBody * {
+    -webkit-user-drag: none;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     font-family: 'Glacial Indifference Regular';
 }
 
-.containerPage {
-    height: 100vh;
-}
-
-.homeLandingPage {
+.mainHeader {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 3.45rem;
+    font-size: 1.75rem;
+    font-weight: bold;
 }
 
-.buttonStart {
-    width: 15%;
-    height: 7%;
-    font-size: 1.5rem;
-    color: #e8cdad;
+.mainHeader .regexForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mainHeader .regexForm input {
+    background-color: #3d2413;
+    width: 20vw;
+    height: 6vh;
+    border-radius: 10px;
     border: none;
     outline: none;
-    border-radius: 20px;
-    margin-top: -12vh;
-    background: var(--clr-brown) url(../../assets/button_arrow_start.svg) no-repeat 92% 53% / 30px;
-    padding-right: 2.5rem;
-    transition: background-color 0.2s ease-in-out;
+    text-align: center;
+    color: #fff1e2;
+    font-size: 1.25rem;
+    transition: box-shadow 0.3s ease, color 0.3s ease;
 }
 
-.buttonStart:hover {
-    background-color: var(--clr-dark-brown);
+.mainHeader input::placeholder {
+    color: #e8cdad;
+}
+
+.mainHeader input:focus::placeholder {
+    color: #fff1e2;
+}
+
+.mainHeader input:focus {
+    box-shadow: 0 0 0.35rem var(--clr-dark-brown); 
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.mainHeader nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.mainHeader nav a {
+    text-decoration: none;
+    color: #312117;
+    transition: color 0.2s ease;
+}
+
+.mainHeader nav a:hover {
+    color: #fff1e2;
+}
+
+.mainHeader .accountIcon {
+    margin: 1rem 1rem 0 0;
+}
+
+.homeMainPage {
+    margin-top: -6vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.homeMainPage .headerFSA {
+    width: 50%;
+}
+
+.homeMainPage .displayFSA {
+    width: 52vw;
+    height: 64vh;
+    background-color: #3d2413;
+    border-radius: 15px;
+    margin-top: -3vh;
+}
+
+.homeMainPage .saveButton {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.25rem;
+    color: #3d2413;
+    transition: color 0.2s ease;
+}
+
+.homeMainPage .saveButton img {
+    width: 2.5vw;
+}
+
+.homeMainPage .saveButton:hover {
+   color: #fff1e2;
 }

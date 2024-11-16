@@ -1,23 +1,39 @@
 import './styles/Homepage.css'
-import Logo from '../assets/header_reg_expresso.svg'
-import Header from '../assets/header_regex_only.svg'
+import ConvertIcon from '../assets/ic_convert.svg'
+import AccountIcon from '../assets/ic_acc.svg'
+import FSAHeader from '../assets/header_fsa.svg'
+import SaveIcon from '../assets/ic_save.svg'
 
 const Homepage = () => {
-    const scrollToMainPage = () => document.querySelector('.homeMainPage')?.scrollIntoView({ behavior: 'smooth' });
-
     return (
         <body className="homepageBody">
-            <section className="homeLandingPage containerPage">
-                <header className='mainLogo'>
-                    <img src={Logo} alt="RegExpersso" />                  
-                </header>
-                <button className='buttonStart' onClick={scrollToMainPage}>Start Converting</button>
-            </section>
+            <header className="mainHeader">
+                <form className='regexForm' action="" method='POST'>
+                    <input type='text' name='regularExpression' placeholder='Enter regular expression here' />
+                    <button type='submit' className='convertIcon'>
+                        <img src={ConvertIcon} alt="convert icon" />
+                    </button>
+                </form>
 
-            <main className='homeMainPage containerPage'>
-                <header>
-                    <img src={Header} alt="RegExpersso" />                  
-                </header>
+                <nav>
+                    <ul>
+                        <li><a href="#aboutUs">About us</a></li>
+                        <li><a href="#history">History</a></li>
+                    </ul>
+                </nav>
+
+                <button className='accountIcon'>
+                    <img src={AccountIcon} alt="account icon" />
+                </button>
+            </header>
+
+            <main className='homeMainPage'>
+                <img className='headerFSA' src={FSAHeader} alt="finite state automata header" />
+                <div className="displayFSA"></div>
+                <button className='saveButton'>
+                    Save automata
+                    <img src={SaveIcon} alt="save icon" />
+                </button>
             </main>
         </body>
     )
