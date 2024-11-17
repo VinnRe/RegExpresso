@@ -7,27 +7,6 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(localStorage.getItem('token') || null);
 
-    // useEffect(() => {
-    //     if (token) {
-    //         fetch(endpoints.login, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 Authorization: `Bearer ${token}`
-    //             },
-    //         })
-    //             .then((res) => res.json())
-    //             .then((data) => {
-    //                 if (data.success) {
-    //                     setUser(data.user);
-    //                 } else {
-    //                     handleLogout();
-    //                 }
-    //             })
-    //             .catch(() => handleLogout())
-    //     }
-    // }, [token])
-
     const handleLogin = async (username, password) => {
         try {
             const response = await fetch(endpoints.login, {
@@ -75,10 +54,21 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    const handleLogout = () => {
-        setUser(null)
-        setToken(null)
-        localStorage.removeItem('token')
+    const handleLogout = async () => {
+        try {
+
+            const response = await fetch(endpoints.logout, {
+                method: 'POST',
+                headers: { 'Authorization': `Bearer ${token}` }
+            })
+
+            setUser(null)
+            setToken(null)
+            localStorage.removeItem('token')
+
+        } catch (error) {
+            console.error("Error Logging Out: ", error)
+        }
     }
 
     return (
@@ -86,6 +76,22 @@ export const AuthProvider = ({ children }) => {
             {children}
         </AuthContext.Provider>
     )
+}
+
+export const getUserData = async () => {
+    const [token, setToken] = useState(localStorage.getItem('token') || null);
+
+    if (!token) {
+        console.error("No Token Found")
+        return
+    } else {
+        const response = await fetch(endpoints.fetch, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+    }
+
 }
 
 export const useAuth = () => React.useContext(AuthContext)
