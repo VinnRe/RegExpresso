@@ -6,22 +6,19 @@ import SaveIcon from '../assets/ic_save.svg'
 
 const Homepage = () => {
     return (
-        <body className="homepageBody">
+        <div className="homepageBody">
             <header className="mainHeader">
                 <form className='regexForm' action="" method='POST'>
-                    <input type='text' name='regularExpression' placeholder='Enter regular expression here' />
+                    <input type='text' name='regularExpression' placeholder='Enter regular expression here' aria-label='RegEx Input' />
                     <button type='submit' className='convertIcon'>
                         <img src={ConvertIcon} alt="convert icon" />
                     </button>
                 </form>
-
-                <nav>
-                    <ul>
-                        <li><a href="#aboutUs">About us</a></li>
-                        <li><a href="#history">History</a></li>
-                    </ul>
-                </nav>
-
+                
+                <button className="previousConversionButton">
+                    <a href="#previousConversions">Previous Conversions</a>
+                </button>
+                
                 <button className='accountIcon'>
                     <img src={AccountIcon} alt="account icon" />
                 </button>
@@ -35,7 +32,7 @@ const Homepage = () => {
                     <img src={SaveIcon} alt="save icon" />
                 </button>
             </main>
-        </body>
+        </div>
     )
 }
 

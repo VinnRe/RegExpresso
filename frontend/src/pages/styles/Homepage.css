@@ -12,15 +12,21 @@
     margin: 0;
     padding: 0;
     font-family: 'Glacial Indifference Regular';
+    font-size: 1.2rem;
+    transition: all 0.4s ease;
+}
+
+.homepageBody button {
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .mainHeader {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 3.45rem;
-    font-size: 1.75rem;
-    font-weight: bold;
+    gap: 2.5rem;
 }
 
 .mainHeader .regexForm {
@@ -28,20 +34,18 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.25rem;
 }
 
 .mainHeader .regexForm input {
     background-color: #3d2413;
-    width: 20vw;
+    width: 25.5vw;
     height: 6vh;
     border-radius: 10px;
     border: none;
     outline: none;
     text-align: center;
     color: #fff1e2;
-    font-size: 1.25rem;
-    transition: box-shadow 0.3s ease, color 0.3s ease;
 }
 
 .mainHeader input::placeholder {
@@ -53,29 +57,35 @@
 }
 
 .mainHeader input:focus {
-    box-shadow: 0 0 0.35rem var(--clr-dark-brown); 
+    box-shadow: 0 0 1.5rem #312117; 
 }
 
-.homepageBody button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.mainHeader nav ul {
-    list-style: none;
+.convertIcon {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 100%;
+    padding: 0.2rem;
 }
 
-.mainHeader nav a {
+.convertIcon img {
+    width: 1.3vw;
+}
+
+.convertIcon:hover {
+    background-color: #fff1e2;
+}
+
+.previousConversionButton a {
     text-decoration: none;
+    padding: 0.3rem;
+    border-radius: 20px;
     color: #312117;
-    transition: color 0.2s ease;
 }
 
-.mainHeader nav a:hover {
+.previousConversionButton a:hover {
+    background-color: #312117;
     color: #fff1e2;
 }
 
@@ -89,7 +99,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 .homeMainPage .headerFSA {
@@ -102,6 +112,7 @@
     background-color: #3d2413;
     border-radius: 15px;
     margin-top: -3vh;
+    box-shadow: 0 0 0.8rem var(--clr-dark-brown); 
 }
 
 .homeMainPage .saveButton {
@@ -109,10 +120,10 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    font-size: 1.25rem;
+    gap: 0.5rem;
     color: #3d2413;
-    transition: color 0.2s ease;
+    padding: 0.3rem;
+    border-radius: 20px;
 }
 
 .homeMainPage .saveButton img {
@@ -121,4 +132,5 @@
 
 .homeMainPage .saveButton:hover {
    color: #fff1e2;
+   background-color: #312117;
 }
