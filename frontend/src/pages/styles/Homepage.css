@@ -56,7 +56,7 @@
     box-shadow: 0 0 0.35rem var(--clr-dark-brown); 
 }
 
-button {
+.homepageBody button {
     background: none;
     border: none;
     cursor: pointer;
@@ -98,7 +98,7 @@ button {
 
 .homeMainPage .displayFSA {
     width: 52vw;
-    height: 64vh;
+    height: 62vh;
     background-color: #3d2413;
     border-radius: 15px;
     margin-top: -3vh;
