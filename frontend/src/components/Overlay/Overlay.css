@@ -1,0 +1,16 @@
+.overlay {
+    height: 100vh;
+    background-color: rgba(232, 205, 173, 0.8);
+    background-image: url(../../assets/bg_login.svg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.changePasswordForm {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}

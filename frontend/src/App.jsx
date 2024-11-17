@@ -4,6 +4,8 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Homepage from './pages/Homepage'
 
+import Overlay from './components/Overlay/Overlay'
+
 function App() {
 
   return (
@@ -39,6 +41,16 @@ function App() {
             element={
               <>
                 <Homepage />
+              </>
+            }
+          />
+
+          {/* Testing overlay for change password */}
+          <Route 
+            path='/overlay'
+            element={
+              <>
+                <Overlay />
               </>
             }
           />
