@@ -4,7 +4,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Homepage from './pages/Homepage'
 
-import Overlay from './components/Overlay/Overlay'
+// import Overlay from './components/Overlay/Overlay'
 
 function App() {
 
@@ -45,7 +45,7 @@ function App() {
             }
           />
 
-          {/* Testing overlay for change password */}
+          {/* Testing overlay for change password
           <Route 
             path='/overlay'
             element={
@@ -53,7 +53,7 @@ function App() {
                 <Overlay />
               </>
             }
-          />
+          /> */}
         </Routes>
       </BrowserRouter>
     </div>

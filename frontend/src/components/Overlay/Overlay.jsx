@@ -1,16 +1,16 @@
 import './Overlay.css'
-// import BackButton from './assets/ic_back_button.svg'
+import BackButton from '../../assets/ic_back.svg'
 
-const Overlay = () => {
+const Overlay = ({ onBack }) => {
     return (
         <section className="overlay">
-            <button className="backButton">
+            <button className="backButton" onClick={onBack}>
                 Back
-                {/* <img src={BackButton} alt="back button" /> */}
+                <img src={BackButton} alt="back button" />
             </button>
             
             <form action="" className='changePasswordForm'>
-                <h2 className="changePasswordHeading">Change Password</h2>
+                <h2 className="changePasswordHeading">Change password</h2>
 
                 <label htmlFor="newPassowrd">New password</label>
                 <input 
