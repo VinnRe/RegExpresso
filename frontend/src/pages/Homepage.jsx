@@ -24,6 +24,9 @@ const Homepage = () => {
         setIsOverlayVisible(false); 
     };
 
+    // Test array to store conversions
+    const [conversions, setConversions] = useState([]);
+
     return (
         <div className="homepageBody">
             <header className="mainHeader">
@@ -35,10 +38,20 @@ const Homepage = () => {
                         <img src={ConvertIcon} alt="convert icon" />
                     </button>
                 </form>
+
+                <div className="previousConversionButtonWrapper">
+                    <button className="previousConversionButton">Previous Conversions</button>
+                    <div className="dropdownConversion">
+                        {conversions.length > 0 ? (
+                            conversions.map((conversion, index) => (
+                                <p key={index}>{conversion}</p>
+                            ))
+                        ) : (
+                            <p>No conversions at the moment</p>
+                        )}
+                    </div>
+                </div>
                 
-                <button className="previousConversionButton">
-                    <a href="#previousConversions">Previous Conversions</a>
-                </button>
                 
                  <div className="accountDropdown">
                     <button className='accountIcon' onClick={toggleDropdown}>
