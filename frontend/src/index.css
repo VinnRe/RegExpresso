@@ -35,3 +35,23 @@ body {
   padding: 0;
   font-family: 'Glacial Indifference Regular';
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--clr-light-brown);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--clr-brown);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-dark-brown);
+}
