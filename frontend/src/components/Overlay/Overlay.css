@@ -1,0 +1,100 @@
+.overlay {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(232, 206, 173, 0.6);
+    background-image: url(../../assets/bg_overlay.svg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 7rem;
+}
+
+.overlay * {
+    font-family: 'Glacial Indifference Regular';
+    box-sizing: border-box;
+    transition: all 0.4s ease;
+    margin: 0;
+    padding: 0;
+}
+
+.backButton {
+    margin: 1rem 1.5rem 0 0;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.5rem;
+    font-family: 'Glacial Indifference Bold';
+    border: none;
+    border-radius: 20px;
+    background: transparent;
+    cursor: pointer;
+    color: var(--clr-dark-brown)
+}
+
+.backButton:hover {
+    background-color: var(--clr-white);
+}
+
+.changePasswordForm {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-right: 3rem;
+}
+
+.changePasswordForm h2 {
+    font-family: 'Glacial Indifference Bold';
+    color: #452f18;
+    font-size: 4rem;
+}
+
+.changePasswordForm label {
+    font-size: 1.5rem;
+    margin-bottom: -0.75rem;
+    color: var(--clr-dark-brown);
+}
+
+.passInput {
+    height: 7vh;
+    background-color: transparent;
+    background-image: url(../../assets/ic_pass.svg);
+    background-repeat: no-repeat;
+    background-position: 3%;
+    background-size: 16px 16px;
+    border-radius: 5px;
+    border: 1.5px solid var(--clr-dark-brown);
+    outline: none;
+    padding: 1.15rem 2.5rem;
+    font-size: 1.15rem;
+    color: #452f18;
+
+}
+
+.passInput:focus {
+    outline: 1.5px solid var(--clr-dark-brown);
+}
+
+.passInput:focus::placeholder {
+    color: #452f18;
+}
+
+.saveChangesButton {
+    height: 7vh;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--clr-brown-btn);
+    color: var(--clr-brown);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.saveChangesButton:hover {
+    background-color: var(--clr-brown);
+    color: var(--clr-brown-btn);
+}

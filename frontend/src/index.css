@@ -6,6 +6,8 @@
   --clr-light-brown: #ad724a;
   --clr-dark-brown: #312117;
   --clr-brown-btn: #c0a484;
+
+  --clr-white: #fff1e2;
 }
 
 @font-face {
@@ -32,4 +34,24 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Glacial Indifference Regular';
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--clr-light-brown);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--clr-brown);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-dark-brown);
 }
