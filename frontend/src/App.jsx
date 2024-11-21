@@ -3,6 +3,7 @@ import './App.css'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Homepage from './pages/Homepage'
+import Home from './pages/Home/home'
 
 // import Overlay from './components/Overlay/Overlay'
 
@@ -40,7 +41,7 @@ function App() {
             path='/'
             element={
               <>
-                <Homepage />
+                <Home />
               </>
             }
           />
