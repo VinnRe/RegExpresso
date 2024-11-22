@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import '../Home/home.css';
-import Logo from '../../assets/header_regex_only.svg';
+import './styles/Home.css';
+import Logo from '../assets/header_regex_only.svg';
 
 const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
