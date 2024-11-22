@@ -1,24 +1,4 @@
 .home__body {
-    --bg-grd-clr-left: #e8cdad;
-    --bg-grd-clr-right: #89695d;
-    
-    --btn-txt-clr: #f1e2d0;
-    --btn-bg-clr-unfocused: #3e241380;
-    --btn-bg-clr-focused: #3d2413;
-    
-    --ipt-txt-clr: #f8f6f3;
-    --ipt-placeholder-clr: #f1e2d0;
-    --ipt-bg-clr-unfocused: #3e24134d;
-    --ipt-bg-clr-focused: #3e24139e;
-    
-    --bg-box-clr: #3d2413;
-    --ic-clr: #3d2413;
-    --ic-clr-hover: #f1e2d0b3;
-    --txt-clr: #3d2413;
-    --txt-clr-hover: #f1e2d0;
-    
-    --brdr-rad: 10px;
-
     /* --outline-clr: #171412;
     --outline: 2px solid var(--outline-clr); */
 
