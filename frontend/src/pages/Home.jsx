@@ -5,9 +5,22 @@ import Footer from '../components/Footer/Footer'
 
 const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+    let dropdownTimeout;
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+    }
+
+    const showDropdown = () => {
+        clearTimeout(dropdownTimeout);
+        setDropdownVisible(true);
+    }
+
+    const hideDropdown = () => {
+        dropdownTimeout = setTimeout(() => {
+            setDropdownVisible(false);
+        }, 200)
     }
 
     useEffect(() => {
@@ -20,8 +33,9 @@ const Home = () => {
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize); 
+            clearTimeout(dropdownTimeout);
         };
-    }, [menuOpen]);
+    }, [dropdownTimeout, menuOpen]);
 
     return (
         <div className="home__body">
@@ -42,9 +56,18 @@ const Home = () => {
                     </ul>
                 </nav>
 
-                <button className="account-button">
-                    <span className="material-symbols-outlined account-button__icon">account_circle</span>
-                </button>
+                <div className="account-wrapper" onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
+                    <span className="material-symbols-outlined account-wrapper__icon">account_circle</span>
+
+                    {dropdownVisible && (
+                        <div className="account__dropdown">
+                            <p className="account__dropdown-username">@your_username</p>
+                            <a className="account__dropdown-link" href="">Edit Password</a>
+                            <a className="account__dropdown-link" href="">Logout</a>
+                        </div>
+                    )}
+                </div>
+
 
                 <span 
                     className="material-symbols-outlined home__menu-icon"
@@ -90,10 +113,22 @@ const Home = () => {
                                 Enter regular expression
                             </label>
                         </div>
-                        <button className="home__form-button">Convert</button>
-                    </form>
+                            <button className="home__form-button">Convert</button>
+                        </form>
+                    </div>
+                </main>
+
+                <section className="home__conversion-section">
+                    <div className="home__conversion-wrapper">
+                        <h2 className="home__conversion-title">Finite State Automata Diagram</h2>
+                    <div className="home__conversion-display"></div>
                 </div>
-            </main>
+
+                <div className="home__conversion-wrapper">
+                    <h2 className="home__conversion-title">Your Previous Conversions</h2>
+                    <div className="home__conversion-display"></div>
+                </div>
+            </section>
 
             <Footer />
         </div>

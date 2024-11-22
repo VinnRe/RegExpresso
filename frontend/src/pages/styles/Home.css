@@ -23,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 4%;
+    gap: 3%;
     flex-wrap: wrap;
     padding: 1rem;
 }
@@ -45,17 +45,18 @@
     list-style-type: none;
     display: flex;
     justify-content: flex-end;
-    gap: 5%;
+    gap: 3%;
     flex-wrap: wrap;
 }
 
 .home__nav-link {
     text-decoration: none;
     color: inherit;
-    font-size: min(1rem, 3vw);
+    font-size: min(1.2rem, 3vw);
     text-align: center;
     transition: var(--transition);
 }
+
 
 .home__nav-link:focus {
     color: var(--txt-clr-hover);
@@ -65,24 +66,45 @@
     color: var(--txt-clr-hover);
 }
 
-.account-button {
-    border: none;
-    background: none;
+.account__wrapper {
+    position: relative;
 }
 
-.account-button__icon {
-    width: 100%;
-    height: auto;
-    font-size: 70px;
+.account-wrapper__icon {
+    font-size: 50px;
     color: var(--ic-clr);
     transition: var(--transition);
     cursor: pointer;
 }
 
-.account-button__icon:hover {
-    color: var(--ic-clr-hover);
+.account__dropdown {
+    position: absolute;
+    top: 5rem;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    background: linear-gradient(to right, rgba(232, 206, 173, 0.1), rgba(232, 206, 173, 0.3));
+    padding: 1.5rem 1rem;
+    border-radius: var(--brdr-rad);
+    pointer-events: auto;
 }
 
+.account__dropdown-link {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+.account__dropdown-link:hover {
+    color: var(--clr-white);
+}
+
+.account__dropdown-link:last-child:hover {
+    color: red;
+}
+ 
 .home__menu-icon {
     display: none;
     margin-top: -0.5rem;
@@ -105,7 +127,6 @@
     background-color: var(--bg-box-clr);
     color: var(--ipt-placeholder-clr);
     padding: 1rem;
-
     transform: translateY(-100%);
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -245,10 +266,41 @@
     background-color: var(--btn-bg-clr-focused);
 }
 
+.home__conversion-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+}
+
+.home__conversion-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.home__conversion-title {
+    font-family: 'Poppins Bold';
+    font-size: clamp(2rem, 3.5vw, 2.82rem);
+    text-wrap: balance;
+    text-align: center;
+}
+
+.home__conversion-display {
+    height: 50vh;
+    width: min(70dvw, 720px);
+    background-color: var(--bg-fsa);
+    border-radius: var(--brdr-rad);
+    box-shadow: 0 0 12px var(--clr-black);
+}
+
 
 @media (width <= 600px) {
     .home__nav,
-    .account-button {
+    .account-wrapper {
         display: none;
     }
 

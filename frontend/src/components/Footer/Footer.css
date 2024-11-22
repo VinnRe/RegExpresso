@@ -6,7 +6,7 @@
     width: 100%;
     height: 10%;
     padding: 1rem;
-    border-top: 2px dotted;
+    /* border-top: 2px dotted; */
     border-color: var(--clr-dark-brown);
     gap: 1rem;
     /* background-color: var(--clr-dark-brown); */

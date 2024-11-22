@@ -2,12 +2,14 @@
   --grad-color-left: #e8cdad;
   --grad-color-right: #89695D;
 
+  --clr-white: #fff1e2;
+  --clr-black: #19181879;
+
   --clr-brown: #573721;
   --clr-light-brown: #ad724a;
   --clr-dark-brown: #312117;
   --clr-brown-btn: #c0a484;
 
-  --clr-white: #fff1e2;
 
   --bg-grd-clr-left: #e8cdad;
   --bg-grd-clr-right: #89695d;
@@ -22,6 +24,8 @@
   --ipt-bg-clr-focused: #3e24139e;
   
   --bg-box-clr: #3d2413;
+  --bg-fsa: #a9876ffe;
+
   --ic-clr: #3d2413;
   --ic-clr-hover: #f1e2d0b3;
   --txt-clr: #3d2413;
