@@ -4,6 +4,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 // import Homepage from './pages/Homepage'
 import Home from './pages/home'
+import About from './pages/About'
 
 // import Overlay from './components/Overlay/Overlay'
 
@@ -13,6 +14,14 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route 
+              path='/about'
+              element={
+                <>
+                  <About />
+                </>
+              }
+          />
           <Route 
             path='/login'
             element={
