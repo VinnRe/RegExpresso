@@ -11,7 +11,7 @@ const Home = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth > 430 && menuOpen) {
+            if (window.innerWidth > 600 && menuOpen) {
                 setMenuOpen(false); 
             }
         };

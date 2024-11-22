@@ -265,7 +265,7 @@
 }
 
 
-@media (width <= 430px) {
+@media (width <= 600px) {
     .home__nav,
     .account-button {
         display: none;
