@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './styles/Home.css';
 import Logo from '../assets/header_regex_only.svg';
+import Footer from '../components/Footer/Footer'
 
 const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -93,6 +94,8 @@ const Home = () => {
                     </form>
                 </div>
             </main>
+
+            <Footer />
         </div>
     );
 };
