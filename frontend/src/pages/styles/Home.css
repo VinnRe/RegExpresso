@@ -23,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 4%;
+    gap: 3%;
     flex-wrap: wrap;
     padding: 1rem;
 }
@@ -45,14 +45,14 @@
     list-style-type: none;
     display: flex;
     justify-content: flex-end;
-    gap: 5%;
+    gap: 3%;
     flex-wrap: wrap;
 }
 
 .home__nav-link {
     text-decoration: none;
     color: inherit;
-    font-size: min(1rem, 3vw);
+    font-size: min(1.2rem, 3vw);
     text-align: center;
     transition: var(--transition);
 }
@@ -71,9 +71,7 @@
 }
 
 .account-wrapper__icon {
-    width: 100%;
-    height: auto;
-    font-size: 70px;
+    font-size: 50px;
     color: var(--ic-clr);
     transition: var(--transition);
     cursor: pointer;
@@ -81,8 +79,8 @@
 
 .account__dropdown {
     position: absolute;
-    top: 6rem;
-    right: 2rem;
+    top: 5rem;
+    right: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -103,6 +101,10 @@
     color: var(--clr-white);
 }
 
+.account__dropdown-link:last-child:hover {
+    color: red;
+}
+ 
 .home__menu-icon {
     display: none;
     margin-top: -0.5rem;
