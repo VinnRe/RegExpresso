@@ -1,13 +1,34 @@
+import { useState, useEffect } from 'react';
 import '../Home/home.css';
 import Logo from '../../assets/header_regex_only.svg';
 
 const Home = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    }
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 430 && menuOpen) {
+                setMenuOpen(false); 
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize); 
+        };
+    }, [menuOpen]);
+
     return (
         <div className="home__body">
             <header className="home__header">
                 <div className="home__logo-wrapper">
                     <img className="home__logo" src={Logo} alt="RegExpresso Logo" />
                 </div>
+
 
                 <nav className="home__nav">
                     <ul className="home__nav-list">
@@ -23,6 +44,27 @@ const Home = () => {
                 <button className="account-button">
                     <span className="material-symbols-outlined account-button__icon">account_circle</span>
                 </button>
+
+                <span 
+                    className="material-symbols-outlined home__menu-icon"
+                    onClick={toggleMenu}
+                    aria-label="Toggle Navigation Menu"
+                >
+                    menu
+                </span>
+
+                <div className={`home__dropdown ${menuOpen ?'active' : ''}`}>
+                <button
+                        className="home__dropdown-close"
+                        onClick={toggleMenu}
+                        aria-label="Close Navigation Menu"
+                    >
+                        ✕
+                    </button>
+                    <a className="home__dropdown-link" href="">Account</a>
+                    <a className="home__dropdown-link" href="">Home</a>
+                    <a className="home__dropdown-link" href="">About us</a>
+                </div>
             </header>
 
             <main className="home__main">
@@ -34,7 +76,19 @@ const Home = () => {
                 <div className="home__main-content">
                     <p className="home__main-description">Transform complex regular expressions into clear, visual finite automata.</p>
                     <form action="" className="home__form">
-                        <input className="home__form-input" type="text" placeholder="Enter regular expression" aria-label='input' />
+                        <div className="home__input-container">
+                            <input 
+                                id="regex-input"
+                                className="home__form-input" 
+                                type="text" 
+                                placeholder=" " 
+                                aria-label='input'
+                                required 
+                            />
+                            <label htmlFor="regex-input" className="home__form-label--floating">
+                                Enter regular expression
+                            </label>
+                        </div>
                         <button className="home__form-button">Convert</button>
                     </form>
                 </div>
