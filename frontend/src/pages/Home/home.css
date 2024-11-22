@@ -105,6 +105,7 @@
 
 .home__menu-icon {
     display: none;
+    margin-top: -0.5rem;
     font-size: 2rem;
     cursor: pointer;
     transition: var(--transition);
