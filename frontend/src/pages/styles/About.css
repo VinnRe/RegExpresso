@@ -76,5 +76,14 @@
 
     .about__body--right h1 {
         font-size: 5rem;
+        margin: 0;
+    }
+
+    .about__body--right .home__button .home__btn {
+        width: 20%;
+    }
+
+    .abt__logo {
+        display: none;
     }
 }

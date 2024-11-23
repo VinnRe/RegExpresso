@@ -65,24 +65,24 @@ const Home = () => {
         };
     }, []);
 
-const showOverlay = useCallback(() => {
-    setOverlayVisible(true);
+    const showOverlay = useCallback(() => {
+        setOverlayVisible(true);
 
-    setTimeout(() => {
-        document.querySelector('.overlay__section').classList.add('visible');
-    }, 0); 
-}, []);
+        setTimeout(() => {
+            document.querySelector('.overlay__section').classList.add('visible');
+        }, 0); 
+    }, []);
 
-const hideOverlay = () => {
-    const overlay = document.querySelector('.overlay__section');
-    
-    overlay.classList.add('hidden');
-    
-    setTimeout(() => {
-        setOverlayVisible(false);
-        overlay.classList.remove('visible', 'hidden'); 
-    }, 300);
-};
+    const hideOverlay = () => {
+        const overlay = document.querySelector('.overlay__section');
+        
+        overlay.classList.add('hidden');
+        
+        setTimeout(() => {
+            setOverlayVisible(false);
+            overlay.classList.remove('visible', 'hidden'); 
+        }, 300);
+    };
 
 
     return (
@@ -95,7 +95,7 @@ const hideOverlay = () => {
                 <nav className="home__nav">
                     <ul className="home__nav-list">
                         <li className="home__nav-item">
-                            <a className="home__nav-link" href="">About us</a>
+                            <a className="home__nav-link" href="/about">About us</a>
                         </li>
                     </ul>
                 </nav>
