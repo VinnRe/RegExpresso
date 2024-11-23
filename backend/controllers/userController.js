@@ -97,6 +97,30 @@ exports.fetchUser = catchAsync(async (req, res) => {
     }
 });
 
+exports.updatePass = catchAsync(async (req, res) => {
+    const { password} = req.body;
+    if (!password || password.length < 8) {
+        return next(new AppError("Password must be at least 8 characters long", 400));
+      }
+    try{
+      const _user = await User.findById(req.user.id);
+  
+      if (!_user) {
+        return next(new AppError("User not found", 404));
+      }
+  
+      _user.password = await hashPassword(password);
+      await _user.save();
+  
+      createSendToken(_user, 200, res, "9999 years");
+    }catch(err){
+        if (err.message === "jwt expired") {
+            return next(new AppError("Your session has expired! Please log in again", 401));
+        }
+        next(err);
+    }
+  });
+
 exports.protect = catchAsync(async (req, res, next) => {
     const { authorization } = req.headers;
     let token;
