@@ -3,13 +3,18 @@ import './styles/Home.css';
 import Logo from '../assets/header_regex_only.svg';
 import Overlay from '../components/Overlay/Overlay';
 import Footer from '../components/Footer/Footer';
+import { endpoints } from '../config/config';
+import { getUserData, useAuth } from '../context/AuthContext';
 
 const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [inputValue, setInputValue] = useState('');
-    const [overlayVisible, setOverlayVisible] = useState(false); 
+    const [overlayVisible, setOverlayVisible] = useState(false);
+    const [username, setUsername] = useState('');
+    const { handleLogout } = useAuth();
+    const token = localStorage.getItem('token')
     let dropdownTimeout;
 
     const toggleMenu = () => {
@@ -85,9 +90,22 @@ const Home = () => {
     };
 
     useEffect(() => {
-        const result = fetch('')
-    })
-
+        const fetchUsername = async () => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                const fetchedUsername = await getUserData(token);
+                if (fetchedUsername) {
+                    setUsername(fetchedUsername);
+                } else {
+                    setUsername('Unknown Username');
+                }
+            } else {
+                setUsername('');
+            }
+        };
+    
+        fetchUsername();
+    }, []);
 
     return (
         <div className="home__body">
@@ -104,20 +122,28 @@ const Home = () => {
                     </ul>
                 </nav>
 
-                <div className="account-wrapper" onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
-                    <span className="material-symbols-outlined account-wrapper__icon">account_circle</span>
+                {!token ? (
+                    <a href="/login" className="home__nav-link">Login</a>
+                ) : (
+                    <div className="account-wrapper" onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
+                        <span className="material-symbols-outlined account-wrapper__icon">account_circle</span>
 
-                    {dropdownVisible && (
-                        <div className="account__dropdown">
-                            <p className="account__dropdown-username">@your_username</p>
-                            <a className="account__dropdown-link" href="" onClick={(e) => {
-                                e.preventDefault();
-                                showOverlay();
-                            }}>Change password</a>
-                            <a className="account__dropdown-link" href="">Logout</a>
-                        </div>
-                    )}
-                </div>
+                        {dropdownVisible && (
+                            <div className="account__dropdown">
+                                <p className="account__dropdown-username">{username}</p>
+                                <a className="account__dropdown-link" href="" onClick={(e) => {
+                                    e.preventDefault();
+                                    showOverlay();
+                                }}>Change password</a>
+                                <a className="account__dropdown-link" href="" 
+                                    onClick={(e) => {
+                                        e.preventDefault(); 
+                                        handleLogout();}}
+                                >Logout</a>
+                            </div>
+                        )}
+                    </div>
+                )}
 
                 <span 
                     className="material-symbols-outlined home__menu-icon"
@@ -135,12 +161,17 @@ const Home = () => {
                     >
                         ✕
                     </button>
-                    <a className="home__dropdown-link" href="" 
-                        onClick={(e) => {
-                            e.preventDefault(); 
-                            toggleAccountDropdown();}}>
-                        Account
-                    </a>
+                    {token ? (
+                        <a className="home__dropdown-link" href="" 
+                            onClick={(e) => {
+                                e.preventDefault(); 
+                                toggleAccountDropdown();}}>
+                            Account
+                        </a>
+                    ) : (
+                        <a className="home__dropdown-link" href="/login">Login</a>
+                    )}
+                    
                     <a className="home__dropdown-link" href="/about">About us</a>
 
                     {accountDropdownOpen && (
@@ -152,13 +183,16 @@ const Home = () => {
                             >
                                 Back
                             </button>
-                            <a href="" className="home__dropdown-link">@your_username</a>
+                            <a href="" className="home__dropdown-link">{username}</a>
                             <a href="" className="home__dropdown-link"onClick={(e) => {
                                 e.preventDefault(); 
                                 showOverlay();}}>
                                 Change password
                             </a>
-                            <a href="" className="home__dropdown-link">Logout</a>
+                            <a className="home__dropdown-link" href="" 
+                                    onClick={(e) => {
+                                        handleLogout();}}
+                                >Logout</a>
                         </div>
                     )}
                 </div>

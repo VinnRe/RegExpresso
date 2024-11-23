@@ -78,20 +78,29 @@ export const AuthProvider = ({ children }) => {
     )
 }
 
-export const getUserData = async () => {
-    const [token, setToken] = useState(localStorage.getItem('token') || null);
-
+export const getUserData = async (token) => {
     if (!token) {
-        console.error("No Token Found")
-        return
-    } else {
+        console.error("No Token Found");
+        return null;
+    }
+    try {
         const response = await fetch(endpoints.fetch, {
             headers: {
-                "Authorization": `Bearer ${token}`
-            }
+                "Authorization": `Bearer ${token}`,
+            },
         });
-    }
 
-}
+        if (!response.ok) {
+            console.error("Failed to fetch user data");
+            return null;
+        }
+
+        const data = await response.json();
+        return data.username;
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        return null;
+    }
+};
 
 export const useAuth = () => React.useContext(AuthContext)

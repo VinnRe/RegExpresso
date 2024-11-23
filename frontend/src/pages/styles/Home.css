@@ -334,4 +334,8 @@
     .home__menu-icon {
         display: block;
     }
+
+    .home__nav-link {
+        display: none;
+    }
 }
