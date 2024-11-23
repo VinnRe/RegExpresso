@@ -120,6 +120,24 @@
     transition: var(--transition);
 }
 
+.home__account-dropdown {
+    width: 100dvw;
+    height: 100dvh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    top: 0;
+    left: 0;
+    background-color: var(--bg-box-clr);
+    color: var(--ipt-placeholder-clr);
+    padding: 1rem;
+    opacity: 1;
+    z-index: 1000000;
+}
+
 .home__dropdown {
     width: 100dvw;
     height: 100dvh;
@@ -164,7 +182,7 @@
     background: none;
     border: none;
     color: var(--btn-txt-clr);
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: 'Poppins Medium';
     cursor: pointer;
     transition: color 0.3s ease;
@@ -303,7 +321,7 @@
     width: min(70dvw, 720px);
     background-color: var(--bg-fsa);
     border-radius: var(--brdr-rad);
-    box-shadow: 0 0 12px var(--clr-black);
+    box-shadow: 0 0 12px var(--clr-black) inset;
 }
 
 

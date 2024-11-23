@@ -6,6 +6,7 @@ import Footer from '../components/Footer/Footer';
 
 const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [inputValue, setInputValue] = useState('');
     const [overlayVisible, setOverlayVisible] = useState(false); 
@@ -14,6 +15,8 @@ const Home = () => {
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
+
+    const toggleAccountDropdown = () => setAccountDropdownOpen(!accountDropdownOpen);
 
     const showDropdown = () => {
         clearTimeout(dropdownTimeout);
@@ -131,9 +134,33 @@ const hideOverlay = () => {
                     >
                         ✕
                     </button>
-                    <a className="home__dropdown-link" href="">Account</a>
+                    <a className="home__dropdown-link" href="" 
+                        onClick={(e) => {
+                            e.preventDefault(); 
+                            toggleAccountDropdown();}}>
+                        Account
+                    </a>
                     <a className="home__dropdown-link" href="">Home</a>
                     <a className="home__dropdown-link" href="">About us</a>
+
+                    {accountDropdownOpen && (
+                        <div className="home__account-dropdown">
+                            <button
+                                className="home__dropdown-close"
+                                onClick={toggleAccountDropdown}
+                                aria-label="Close Navigation Menu"
+                            >
+                                Back
+                            </button>
+                            <a href="" className="home__dropdown-link">@your_username</a>
+                            <a href="" className="home__dropdown-link"onClick={(e) => {
+                                e.preventDefault(); 
+                                showOverlay();}}>
+                                Change password
+                            </a>
+                            <a href="" className="home__dropdown-link">Logout</a>
+                        </div>
+                    )}
                 </div>
             </header>
 
