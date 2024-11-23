@@ -62,13 +62,25 @@ const Home = () => {
         };
     }, []);
 
-    const showOverlay = useCallback(() => {
-        setOverlayVisible(true);
-    }, []);
+const showOverlay = useCallback(() => {
+    setOverlayVisible(true);
 
-    const hideOverlay = () => {
+    setTimeout(() => {
+        document.querySelector('.overlay__section').classList.add('visible');
+    }, 0); 
+}, []);
+
+const hideOverlay = () => {
+    const overlay = document.querySelector('.overlay__section');
+    
+    overlay.classList.add('hidden');
+    
+    setTimeout(() => {
         setOverlayVisible(false);
-    };
+        overlay.classList.remove('visible', 'hidden'); 
+    }, 300);
+};
+
 
     return (
         <div className="home__body">
