@@ -8,7 +8,7 @@ const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [inputValue, setInputValue] = useState('');
-    const [overlayVisible, setOverlayVisible] = useState(false); // Track overlay visibility
+    const [overlayVisible, setOverlayVisible] = useState(false); 
     let dropdownTimeout;
 
     const toggleMenu = () => {
@@ -62,15 +62,12 @@ const Home = () => {
         };
     }, []);
 
-    // Use useCallback to memoize showOverlay to avoid unnecessary rerenders
     const showOverlay = useCallback(() => {
         setOverlayVisible(true);
-        // document.body.style.overflow = 'hidden'; // Disable scrolling by changing body overflow
     }, []);
 
     const hideOverlay = () => {
         setOverlayVisible(false);
-        // document.body.style.overflow = ''; // Revert body overflow to normal
     };
 
     return (
