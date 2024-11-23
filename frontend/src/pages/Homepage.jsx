@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './styles/Homepage.css';
 import LogoHeader from '../assets/ic_logo_regexpresso.svg';
 import ConvertIcon from '../assets/ic_convert.svg';
@@ -25,7 +25,7 @@ const Homepage = () => {
     };
 
     // Test array to store conversions
-    const [conversions, setConversions] = useState([]);
+    const [conversions] = useState([]);
 
     return (
         <div className="homepageBody">

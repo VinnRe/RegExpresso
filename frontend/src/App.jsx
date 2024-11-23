@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import Homepage from './pages/Homepage'
-import Test from './pages/Test'
+// import Homepage from './pages/Homepage'
+import Home from './pages/Home'
+import About from './pages/About'
 
-// import Overlay from './components/Overlay/Overlay'
 
 function App() {
 
@@ -13,6 +13,14 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route 
+              path='/about'
+              element={
+                <>
+                  <About />
+                </>
+              }
+          />
           <Route 
             path='/login'
             element={
@@ -33,7 +41,7 @@ function App() {
             path='/home'
             element={
               <>
-                <Homepage />
+                <Home />
               </>
             }
           />
@@ -41,7 +49,7 @@ function App() {
             path='/'
             element={
               <>
-                <Homepage />
+                <Home />
               </>
             }
           />
