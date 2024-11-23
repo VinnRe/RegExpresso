@@ -5,6 +5,7 @@ import Overlay from '../components/Overlay/Overlay';
 import Footer from '../components/Footer/Footer';
 import { endpoints } from '../config/config';
 import { getUserData, useAuth } from '../context/AuthContext';
+import useDotScript from '../hooks/useDotScript';
 
 const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -15,6 +16,7 @@ const Home = () => {
     const [username, setUsername] = useState('');
     const { handleLogout } = useAuth();
     const token = localStorage.getItem('token')
+    const { dotScript, fetchDotScript, loading, error } = useDotScript();
     let dropdownTimeout;
 
     const toggleMenu = () => {
@@ -106,6 +108,10 @@ const Home = () => {
     
         fetchUsername();
     }, []);
+
+    const handleVisualizeClick = () => {
+        fetchDotScript({regEx});
+    }
 
     return (
         <div className="home__body">
