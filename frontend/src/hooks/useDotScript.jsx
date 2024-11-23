@@ -6,31 +6,49 @@ const useDotScript = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchDotScript = async (regEx) => {
+  const fetchDotScript = async (regEx, type) => {
     setLoading(true);
     setError(null); // Clear previous errors
     try {
-      const response = await fetch(endpoints.visualize, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ regEx }), // Send the regular expression
-      });
+        if (type == 'NFA') {
+            const response = await fetch(endpoints.visualizeNFA, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ regEx }),
+            });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
 
-      const data = await response.json();
-      setDotScript(data.dotScript); // Update the state with the fetched DOT script
-    } catch (error) {
-      setError(error.message);
-      console.error('Error fetching DOT script:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+            const data = await response.json();
+            setDotScript(data.dotScript); 
+        } else if ( type == 'DFA') {
+            const response = await fetch(endpoints.visualizeDFA, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ regEx }),
+              });
 
-  return { dotScript, fetchDotScript, loading, error };
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+
+            const data = await response.json();
+            setDotScript(data.dotScript); 
+        } else {
+            setError(error.message);
+            console.error('Error fetching DOT script:', error);
+        }
+        } catch (error) {
+            setError(error.message);
+            console.error('Error fetching DOT script:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { dotScript, fetchDotScript, loading, error };
 };
 
 export default useDotScript;

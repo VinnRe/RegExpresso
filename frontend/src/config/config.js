@@ -5,5 +5,6 @@ export const endpoints = {
     signup: `/api/user/signup`,
     logout: `/api/user/logout`,
     fetch: `/api/user/fetch`,
-    visualize: `/api/parse/visualizeFSM`
+    visualizeNFA: `/api/parse/visualizeNFA`,
+    visualizeDFA: `/api/parse/visualizeDFA`
 } 

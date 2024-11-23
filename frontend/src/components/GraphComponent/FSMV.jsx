@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { graphviz } from 'd3-graphviz';
+import * as d3 from 'd3'
+import './FSMV.css'
 
 const FSMV = ({ dotScript }) => {
   const graphRef = useRef(null);
@@ -8,8 +10,17 @@ const FSMV = ({ dotScript }) => {
     if (graphRef.current && dotScript) {
       const graph = graphviz(graphRef.current);
 
-      graph.renderDot(dotScript); // Correct method to render a DOT script
-      graph.zoom(true); // Enables zoom and pan functionality
+      graph.renderDot(dotScript).on("end", () => {
+        d3.select(graphRef.current)
+          .select("polygon")
+          .attr("fill", "none")
+        
+        const svg = d3.select(graphRef.current).select("svg");
+        svg.attr("height", "100%"); 
+        svg.attr("width", "100%"); 
+      });
+
+      graph.zoom(true);
     }
   }, [dotScript]);
 
@@ -17,11 +28,6 @@ const FSMV = ({ dotScript }) => {
     <div
       ref={graphRef}
       className="graph"
-      style={{
-        width: '100%',
-        height: '500px', // Ensure the container has a visible height
-        border: '1px solid #ccc',
-      }}
     ></div>
   );
 };

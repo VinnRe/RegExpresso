@@ -1,0 +1,7 @@
+.graph {
+    width: 100%; /* Full width of parent container */
+    height: 50vh; /* Set desired height */
+    display: flex; /* Optional for centering or layout */
+    align-items: center; /* Optional for vertical alignment */
+    justify-content: center; /* Optional for horizontal alignment */
+}

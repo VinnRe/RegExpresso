@@ -6,6 +6,7 @@ import Footer from '../components/Footer/Footer';
 import { endpoints } from '../config/config';
 import { getUserData, useAuth } from '../context/AuthContext';
 import useDotScript from '../hooks/useDotScript';
+import FSMV from '../components/GraphComponent/FSMV';
 
 const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -109,8 +110,14 @@ const Home = () => {
         fetchUsername();
     }, []);
 
-    const handleVisualizeClick = () => {
-        fetchDotScript({regEx});
+    const handleVisualizeNFA = (e) => {
+        e.preventDefault();
+        fetchDotScript(inputValue, 'NFA');
+    }
+    
+    const handleVisualizeDFA = (e) => {
+        e.preventDefault();
+        fetchDotScript(inputValue, 'DFA');
     }
 
     return (
@@ -197,6 +204,7 @@ const Home = () => {
                             </a>
                             <a className="home__dropdown-link" href="" 
                                     onClick={(e) => {
+                                        e.preventDefault();
                                         handleLogout();}}
                                 >Logout</a>
                         </div>
@@ -213,7 +221,7 @@ const Home = () => {
                 <div className="home__main-content">
                     <p className="home__main-description">Transform complex regular expressions into clear, visual finite automata.</p>
                     <form action="" className="home__form">
-                        <div className="home__input-container">
+                        <div className="home__input-container" onSubmit={(e) => e.preventDefault()}>
                             <input 
                                 id="regex-input-1"
                                 className="home__form-input" 
@@ -227,7 +235,8 @@ const Home = () => {
                                 Enter regular expression
                             </label>
                         </div>
-                        <button className="home__form-button">Convert</button>
+                        <button className="home__form-button" onClick={handleVisualizeNFA}>Convert NFA</button>
+                        <button className="home__form-button" onClick={handleVisualizeDFA}>Convert DFA</button>
                     </form>
                 </div>
             </main>
@@ -235,9 +244,11 @@ const Home = () => {
             <section className="home__conversion-section">
                 <div className="home__conversion-wrapper">
                     <h2 className="home__conversion-title">Finite State Automata Diagram</h2>
-                    <div className="home__conversion-display"></div>
+                    <div className="home__conversion-display">
+                        <FSMV dotScript={dotScript} />
+                    </div>
                     
-                    <form action="" className="home__form">
+                    <form action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
                         <div className="home__input-container">
                             <input 
                                 id="regex-input-2"
@@ -252,7 +263,8 @@ const Home = () => {
                                 Enter regular expression
                             </label>
                         </div>
-                        <button className="home__form-button">Convert</button>
+                        <button className="home__form-button" onClick={handleVisualizeNFA}>Convert NFA</button>
+                        <button className="home__form-button" onClick={handleVisualizeDFA}>Convert DFA</button>
                     </form>
                 </div>
 
