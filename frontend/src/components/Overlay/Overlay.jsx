@@ -1,41 +1,53 @@
 import './Overlay.css'
-import BackButton from '../../assets/ic_back.svg'
+import PropTypes from 'prop-types'; 
 
-const Overlay = ({ onBack }) => {
+const Overlay = ({onCancel}) => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
+
     return (
-        <section className="overlay">
-            <button className="backButton" onClick={onBack}>
-                Back
-                <img src={BackButton} alt="back button" />
-            </button>
-            
-            <form action="" className='changePasswordForm'>
-                <h2 className="changePasswordHeading">Change password</h2>
+        <section className="overlay__section">
+            <form action="" className='overlay__form' onSubmit={handleSubmit}>
+                <h2 className="overlay__form-title">Change Password</h2>
 
-                <label htmlFor="newPassowrd">New password</label>
-                <input 
-                    type="password"
-                    id='newPassword' 
-                    name='newPassword' 
-                    className="passInput" 
-                    placeholder='Enter new password here'
-                    required
-                />
+                <div className='form-input__wrapper'>
+                    <label htmlFor="newPassword">New password</label>
+                    <input 
+                        type="password"
+                        id='newPassword' 
+                        name='newPassword' 
+                        className="overlay__form-input" 
+                        placeholder='Enter new password here'
+                        required
+                    />
+                </div>
 
-                <label htmlFor="confirmNewPassword">Confirm new password</label>
-                <input 
-                    type="password"
-                    id='confirmNewPassword' 
-                    name='confirmNewPassword' 
-                    className="passInput" 
-                    placeholder='Re-enter new password here'
-                    required
-                />
-
-                <button type='submit' className="saveChangesButton">Save Changes</button>
+                <div className='form-input__wrapper'>
+                    <label htmlFor="confirmNewPassword">Confirm new password</label>
+                    <input 
+                        type="password"
+                        id='confirmNewPassword' 
+                        name='confirmNewPassword' 
+                        className="overlay__form-input" 
+                        placeholder='Re-enter new password here'
+                        required
+                    />
+                </div>
+                <button className="overlay__form-button">Save Changes</button>
+                
+                <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); onCancel(); }} 
+                        type='button' 
+                        className="overlay__back-button">
+                Cancel
+                </button>
             </form>
         </section>
-    )
-}
+    );
+};
+
+Overlay.propTypes = {
+    onCancel: PropTypes.func.isRequired,
+};
 
 export default Overlay

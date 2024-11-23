@@ -19,6 +19,8 @@
 }
 
 .home__header {
+    position: sticky;
+    top: 0;
     height: 10vh;
     display: flex;
     justify-content: space-between;
@@ -26,6 +28,11 @@
     gap: 3%;
     flex-wrap: wrap;
     padding: 1rem;
+    z-index: 100;
+}
+
+.home__header.scrolled {
+    background-image: linear-gradient(to right, var(--grad-color-left), var(--grad-color-right));
 }
 
 .home__logo-wrapper {
@@ -85,7 +92,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-    background: linear-gradient(to right, rgba(232, 206, 173, 0.1), rgba(232, 206, 173, 0.3));
+    background-image: linear-gradient(to right, rgba(232, 206, 173, 0.1), rgba(232, 206, 173, 0.3));
     padding: 1.5rem 1rem;
     border-radius: var(--brdr-rad);
     pointer-events: auto;
@@ -130,7 +137,7 @@
     transform: translateY(-100%);
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 .home__dropdown.active {
@@ -225,6 +232,7 @@
     padding-left: 1em;
     padding-bottom: 1em;
     transition: var(--transition);
+    cursor: pointer;
 }
 
 .home__form-label--floating {
@@ -254,16 +262,17 @@
     font-family: inherit;
     font-size: 1rem;
     padding: 1em;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     cursor: pointer;
-}
-
-.home__form-button:focus {
-    background-color: var(--btn-bg-clr-focused);
 }
 
 .home__form-button:hover {
     background-color: var(--btn-bg-clr-focused);
+}
+
+.home__form-button:active {
+    scale: 1.1;
+    background-color: var(--btn-bg-clr-unfocused);
 }
 
 .home__conversion-section {
