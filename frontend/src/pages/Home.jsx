@@ -95,9 +95,6 @@ const hideOverlay = () => {
                 <nav className="home__nav">
                     <ul className="home__nav-list">
                         <li className="home__nav-item">
-                            <a className="home__nav-link" href="">Home</a>
-                        </li>
-                        <li className="home__nav-item">
                             <a className="home__nav-link" href="">About us</a>
                         </li>
                     </ul>
@@ -140,8 +137,7 @@ const hideOverlay = () => {
                             toggleAccountDropdown();}}>
                         Account
                     </a>
-                    <a className="home__dropdown-link" href="">Home</a>
-                    <a className="home__dropdown-link" href="">About us</a>
+                    <a className="home__dropdown-link" href="/about">About us</a>
 
                     {accountDropdownOpen && (
                         <div className="home__account-dropdown">
@@ -214,6 +210,11 @@ const hideOverlay = () => {
                         </div>
                         <button className="home__form-button">Convert</button>
                     </form>
+                </div>
+
+                <div className="home__conversion-wrapper">
+                    <h2 className="home__conversion-title">5 Tuples</h2>
+                    <div className="home__conversion-display home__conversion-tuples"></div>
                 </div>
 
                 <div className="home__conversion-wrapper">

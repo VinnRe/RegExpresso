@@ -33,6 +33,7 @@
     align-items: center;
     text-decoration: none;
     color: var(--clr-dark-brown);
+    text-align: center;
 }
 
 .footer__contact-links .footer__social li a img {
