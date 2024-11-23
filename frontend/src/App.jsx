@@ -3,7 +3,7 @@ import './App.css'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 // import Homepage from './pages/Homepage'
-import Home from './pages/Home'
+import Home from './pages/home'
 import About from './pages/About'
 
 
@@ -53,15 +53,6 @@ function App() {
               </>
             }
           />
-          <Route 
-            path='/test'
-            element={
-              <>
-                <Test />
-              </>
-            }
-          />
-
           {/* Testing overlay for change password
           <Route 
             path='/overlay'

@@ -84,6 +84,10 @@ const Home = () => {
         }, 300);
     };
 
+    useEffect(() => {
+        const result = fetch('')
+    })
+
 
     return (
         <div className="home__body">
