@@ -1,5 +1,6 @@
 const catchAsync = require('../utils/catchAsync');
 const regParser = require('../utils/regparser.js');
+const Automaton = require("../models/automatonModel.js"); 
 
 exports.parseNFA = catchAsync(async (req, res) => {
   const {regEx} = req.body;
@@ -91,9 +92,9 @@ exports.to5Tuples = catchAsync(async (req, res) => {
   }
 
   try {
-    const parser = new regParser.RegParser(regEx); // Initialize the parser with the regex
-    const fsm = parser.parseToDFA(); // Parse the regex into a DFA
-    const tuples = fsm.to5Tuple(); // Get the 5-tuple representation
+    const parser = new regParser.RegParser(regEx); 
+    const fsm = parser.parseToDFA(); 
+    const tuples = fsm.to5Tuple(); 
 
     return res.json({
       message: 'FSM successfully converted to 5-tuple',
@@ -104,5 +105,80 @@ exports.to5Tuples = catchAsync(async (req, res) => {
   }
 });
 
+exports.saveRegEx = catchAsync(async (req, res) => {
+  const { regEx } = req.body;
+
+  if (!regEx) {
+      return res.status(400).json({ error: 'Regex is required.' });
+  }
+
+  try {
+      const automaton = await Automaton.create({
+          regEx,
+          userId: req.user.id 
+      });
+
+      res.status(201).json({
+          status: 'success',
+          data: {
+              automaton
+          }
+      });
+  } catch (error) {
+      res.status(500).json({
+          status: 'error',
+          message: 'Failed to save regex',
+          error: error.message
+      });
+  }
+});
 
 
+exports.deleteRegEx = catchAsync(async (req, res) => {
+  const { id } = req.params;
+
+  if (!id) {
+      return res.status(400).json({ error: 'Regex ID is required.' });
+  }
+
+  try {
+      const automaton = await Automaton.findOne({ _id: id, userId: req.user.id });
+
+      if (!automaton) {
+          return res.status(404).json({ error: 'Regex not found or not authorized to delete.' });
+      }
+
+      await Automaton.deleteOne({ _id: id });
+
+      res.status(200).json({
+          status: 'success',
+          message: 'Regex deleted successfully'
+      });
+  } catch (error) {
+      res.status(500).json({
+          status: 'error',
+          message: 'Failed to delete regex',
+          error: error.message
+      });
+  }
+});
+
+exports.fetchAllRegEx = catchAsync(async (req, res) => {
+  try {
+      const automatons = await Automaton.find({ userId: req.user.id });
+
+      res.status(200).json({
+          status: 'success',
+          results: automatons.length,
+          data: {
+              automatons
+          }
+      });
+  } catch (error) {
+      res.status(500).json({
+          status: 'error',
+          message: 'Failed to fetch regex',
+          error: error.message
+      });
+  }
+});

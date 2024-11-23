@@ -1,23 +1,15 @@
 const mongoose = require('mongoose');
 
 const AutomatonSchema = new mongoose.Schema({
-    name: { 
+    regEx: { 
         type: String, 
         required: true 
     },
-    regex: { 
-        type: String, 
+    userId: { 
+        type: mongoose.Schema.Types.ObjectId, 
         required: true 
     },
-    nfa: { 
-        type: Object, 
-        required: true 
-    },
-    dfa: { 
-        type: Object, 
-        required: true 
-    },
-});
+}, { timestamps: true });
 
 const Automaton = mongoose.model('Automaton', AutomatonSchema);
 module.exports = Automaton;
