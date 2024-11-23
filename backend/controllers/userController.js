@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const catchAsync = require("../utils/catchAsync.js");
-const User = require("../models/userModel.js");  // Added import for User model
+const User = require("../models/userModel.js"); 
 
 const hashPassword = async (pass) => {
     return await bcrypt.hash(pass, 10);

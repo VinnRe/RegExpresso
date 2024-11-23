@@ -446,5 +446,40 @@ RegParser.prototype._consume = function(type) {
   this.lookHead = this.lexer.nextToken();
 }
 
+FSM.prototype.to5Tuple = function() {
+  const Q = new Set();
+
+for (const [state, transitions] of Object.entries(this.transitions)) {
+  Q.add(parseInt(state)); 
+  for (const nextState of Object.keys(transitions)) {
+    Q.add(parseInt(nextState)); 
+  }
+}
+
+const statesArray = Array.from(Q);
+
+  const Sigma = new Set();
+  const Delta = []; 
+  for (const [state, transitions] of Object.entries(this.transitions)) {
+    for (const [nextState, label] of Object.entries(transitions)) {
+      Delta.push([parseInt(state), label, parseInt(nextState)]);
+      Sigma.add(label);
+    }
+  }
+  const q0 = parseInt(this.initialState); 
+  const F = this.acceptStates.map(id => parseInt(id)); 
+
+
+  return {
+    Q: statesArray,
+    Sigma: Array.from(Sigma),
+    Delta: Delta,
+    q0: q0,
+    F: F,
+  };
+};
+
+
+
 module.exports.RegParser = RegParser;
 module.exports.FSM = FSM;
