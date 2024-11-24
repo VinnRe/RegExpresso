@@ -6,5 +6,7 @@ export const endpoints = {
     logout: `/api/user/logout`,
     fetch: `/api/user/fetch`,
     visualizeNFA: `/api/parse/visualizeNFA`,
-    visualizeDFA: `/api/parse/visualizeDFA`
+    visualizeDFA: `/api/parse/visualizeDFA`,
+    fetchRegex: `/api/parse/fetchAll`,
+    saveRegex: `/api/parse/save`,
 } 

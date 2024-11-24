@@ -7,6 +7,7 @@ import { endpoints } from '../config/config';
 import { getUserData, useAuth } from '../context/AuthContext';
 import useDotScript from '../hooks/useDotScript';
 import FSMV from '../components/GraphComponent/FSMV';
+import useRegexOptions from '../hooks/useRegexOptions';
 
 const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -20,6 +21,8 @@ const Home = () => {
     const { handleLogout } = useAuth();
     const token = localStorage.getItem('token')
     const { dotScript, fetchDotScript, loading, error } = useDotScript();
+    const { fetchRegex, saveRegex } = useRegexOptions();
+    const [allRegex, setAllRegex] = useState([]);
     let dropdownTimeout;
 
     const toggleMenu = () => {
@@ -113,7 +116,14 @@ const Home = () => {
                 setUsername('');
             }
         };
-    
+
+        const getAllRegex = async () => {
+            const data = await fetchRegex(token);
+            const regexList = data.data.automatons.map((item) => item.regEx);
+            setAllRegex(regexList)
+        }
+
+        getAllRegex();
         fetchUsername();
     }, []);
 
@@ -128,6 +138,17 @@ const Home = () => {
     const handleVisualize = (type) => {
         if (!validateInput()) return;
         fetchDotScript(inputValue, type);
+        scrollToConversionSection();
+    }
+
+    const handleSaveRegex = () => {
+        if (!validateInput()) return;
+        saveRegex(inputValue, token);
+        console.log("REGEX SAVED: ", inputValue)
+    }
+
+    const handleHistoryClick = (regexValue) => {
+        setInputValue(regexValue);
         scrollToConversionSection();
     }
 
@@ -279,6 +300,7 @@ const Home = () => {
                         <div className="form__button-wrapper">
                             <button className="home__form-button" onClick={() => handleVisualize('NFA')}>Convert NFA</button>
                             <button className="home__form-button" onClick={() => handleVisualize('DFA')}>Convert DFA</button>
+                            <button className="home__form-button" onClick={() => handleSaveRegex()}>Save Regex</button>
                         </div>
                     </form>
                 </div>
@@ -290,7 +312,24 @@ const Home = () => {
 
                 <div className="home__conversion-wrapper">
                     <h2 className="home__conversion-title">Your Previous Conversions</h2>
-                    <div className="home__conversion-display"></div>
+                    <div className="home__conversion-display">
+                        <ul className='home__conversion-histrory-list'>
+                            {allRegex.length > 0 ? (
+                                allRegex.map((regexItem, index) => (
+                                    <li 
+                                        key={index} 
+                                        onClick={() => handleHistoryClick(regexItem)} 
+                                        style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}
+                                        className='home__conversion-history-regex'
+                                    >
+                                        {regexItem}
+                                    </li>
+                                ))
+                            ) : (
+                                <p>No regex found.</p>
+                            )}
+                        </ul>
+                    </div>
                 </div>
             </section>
 
