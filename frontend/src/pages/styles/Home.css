@@ -1,15 +1,8 @@
 .home__body {
-    /* --outline-clr: #171412;
-    --outline: 2px solid var(--outline-clr); */
-
-    --transition: color 0.3s ease, background-color 0.3s ease;
-
     font-family: 'Poppins Regular';
     color: var(--txt-clr);
-    
     background-image: 
         linear-gradient(to right, var(--bg-grd-clr-left), var(--bg-grd-clr-right));
-
 }
 
 .home__body * {
@@ -59,11 +52,10 @@
 .home__nav-link {
     text-decoration: none;
     color: inherit;
-    font-size: min(1.2rem, 3vw);
+    font-size: 1.2rem;
     text-align: center;
     transition: var(--transition);
 }
-
 
 .home__nav-link:focus {
     color: var(--txt-clr-hover);
@@ -71,6 +63,19 @@
 
 .home__nav-link:hover {
     color: var(--txt-clr-hover);
+}
+
+.home__nav-login {
+    background-color: var(--btn-bg-clr-unfocused);
+    color: var(--btn-txt-clr);
+    font-size: 1rem; 
+    padding: 0.5em 0.75em;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.home__nav-login:hover {
+    background-color: var(--btn-bg-clr-focused);
 }
 
 .account__wrapper {
@@ -206,7 +211,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
 .home__main-title {
@@ -229,8 +234,10 @@
 
 .home__form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
 }
 
@@ -239,14 +246,16 @@
 }
 
 .home__form-input {
-    width: clamp(235px, 33vw, 460px);
+    position: relative;
+    width: calc(500px + 1rem);
+    height: 56px;
     border: none;
     border-radius: var(--brdr-rad);
     background-color: var(--ipt-bg-clr-unfocused);
     color: var(--ipt-txt-clr);
     font-family: inherit;
     font-size: 1rem;
-    padding-top: 1.35em;
+    padding-top: 1.4em;
     padding-left: 1em;
     padding-bottom: 1em;
     transition: var(--transition);
@@ -255,7 +264,7 @@
 
 .home__form-label--floating {
     position: absolute;
-    top: 1.05rem;
+    top: 1rem;
     left: 1rem;
     font-size: 1rem;
     color: var(--ipt-placeholder-clr);
@@ -265,14 +274,43 @@
 
 .home__form-input:focus + .home__form-label--floating,
 .home__form-input:not(:placeholder-shown) + .home__form-label--floating {
-    top: 4px;
-    left: 16px;
+    top: 0.2rem;
+    left: 1rem;
     font-size: 0.8rem;
-    color: var(--txt-clr-hover);
+    color: var(--ipt-txt-clr);
+}
+
+.input-error .home__form-input {
+    outline: 3px solid red;
+}
+
+.label-error {
+    color: red;
+}
+
+.home__form-input:focus + .label-error,
+.home__form-input:not(:placeholder-shown) + .label-error {
+    color: red;
+}
+
+.form-input__error-message {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1rem;
+    color: red;
+}
+
+.form__button-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
 .home__form-button {
-    width: clamp(235px, 35vw, 250px);
+    width: 250px;
     border: none;
     border-radius: var(--brdr-rad);
     background-color: var(--btn-bg-clr-unfocused);
@@ -280,7 +318,7 @@
     font-family: inherit;
     font-size: 1rem;
     padding: 1em;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, scale 0.3s ease-out;
     cursor: pointer;
 }
 
@@ -325,7 +363,11 @@
 }
 
 
-@media (width <= 600px) {
+@media (width <= 515px) {
+    .home__form-input {
+        width: 250px;
+    }
+
     .home__nav,
     .account-wrapper {
         display: none;

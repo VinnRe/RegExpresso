@@ -32,6 +32,11 @@
   --txt-clr-hover: #f1e2d0;
   
   --brdr-rad: 10px;
+
+  --outline-clr: #f1e2d0;
+  --outline: 3px solid var(--outline-clr);
+
+  --transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 @font-face {
@@ -67,6 +72,10 @@
 @font-face {
   font-family: 'Poppins Bold';
   src: url(./assets/fonts/Poppins-Bold.ttf);
+}
+
+*:focus {
+  outline: var(--outline);
 }
 
 body {

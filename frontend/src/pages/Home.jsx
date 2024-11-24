@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import './styles/Home.css';
 import Logo from '../assets/header_regex_only.svg';
 import Overlay from '../components/Overlay/Overlay';
@@ -13,6 +13,8 @@ const Home = () => {
     const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [inputValue, setInputValue] = useState('');
+    const [hasError, setHasError] = useState(false);
+    const conversionSectionRef = useRef(null);
     const [overlayVisible, setOverlayVisible] = useState(false);
     const [username, setUsername] = useState('');
     const { handleLogout } = useAuth();
@@ -54,6 +56,11 @@ const Home = () => {
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
+        if (e.target.value.trim() !== '') setHasError(false);
+    };
+
+    const scrollToConversionSection = () => {
+        conversionSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center'});
     };
 
     useEffect(() => {
@@ -110,14 +117,18 @@ const Home = () => {
         fetchUsername();
     }, []);
 
-    const handleVisualizeNFA = (e) => {
-        e.preventDefault();
-        fetchDotScript(inputValue, 'NFA');
+    const validateInput = () => {
+        if (!inputValue.trim()) {
+            setHasError(true);
+            return false;
+        }
+        return true;
     }
-    
-    const handleVisualizeDFA = (e) => {
-        e.preventDefault();
-        fetchDotScript(inputValue, 'DFA');
+
+    const handleVisualize = (type) => {
+        if (!validateInput()) return;
+        fetchDotScript(inputValue, type);
+        scrollToConversionSection();
     }
 
     return (
@@ -136,7 +147,7 @@ const Home = () => {
                 </nav>
 
                 {!token ? (
-                    <a href="/login" className="home__nav-link">Login</a>
+                    <a href="/login" className="home__nav-link home__nav-login">Login</a>
                 ) : (
                     <div className="account-wrapper" onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
                         <span className="material-symbols-outlined account-wrapper__icon">account_circle</span>
@@ -220,8 +231,8 @@ const Home = () => {
 
                 <div className="home__main-content">
                     <p className="home__main-description">Transform complex regular expressions into clear, visual finite automata.</p>
-                    <form action="" className="home__form">
-                        <div className="home__input-container" onSubmit={(e) => e.preventDefault()}>
+                    <form action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
+                        <div className={`home__input-container ${hasError ? 'input-error' : ''}`} >
                             <input 
                                 id="regex-input-1"
                                 className="home__form-input" 
@@ -231,26 +242,28 @@ const Home = () => {
                                 onChange={handleInputChange}
                                 required 
                             />
-                            <label htmlFor="regex-input-1" className="home__form-label--floating">
+                            <label htmlFor="regex-input-1" className={`home__form-label--floating ${hasError ? 'label-error' : ''}`}>
                                 Enter regular expression
                             </label>
                         </div>
-                        <button className="home__form-button" onClick={handleVisualizeNFA}>Convert NFA</button>
-                        <button className="home__form-button" onClick={handleVisualizeDFA}>Convert DFA</button>
+                        <div className="form__button-wrapper">
+                            <button className="home__form-button" onClick={() => handleVisualize('NFA')}>Convert NFA</button>
+                            <button className="home__form-button" onClick={() => handleVisualize('DFA')}>Convert DFA</button>
+                        </div>
                     </form>
                 </div>
             </main>
 
             <section className="home__conversion-section">
                 <div className="home__conversion-wrapper">
-                    <h2 className="home__conversion-title">Finite State Automata Diagram</h2>
-                    <div className="home__conversion-display">
+                    <h2  className="home__conversion-title">Finite State Automata Diagram</h2>
+                    <div ref={conversionSectionRef} className="home__conversion-display">
                         <FSMV dotScript={dotScript} />
                     </div>
                     
-                    <form action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
-                        <div className="home__input-container">
-                            <input 
+                    <form  action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
+                        <div className={`home__input-container ${hasError ? 'input-error' : ''}`}>
+                            <input
                                 id="regex-input-2"
                                 className="home__form-input" 
                                 type="text" 
@@ -259,12 +272,14 @@ const Home = () => {
                                 onChange={handleInputChange} 
                                 required 
                             />
-                            <label htmlFor="regex-input-2" className="home__form-label--floating">
+                            <label htmlFor="regex-input-2" className={`home__form-label--floating ${hasError ? 'label-error' : ''}`}>
                                 Enter regular expression
                             </label>
                         </div>
-                        <button className="home__form-button" onClick={handleVisualizeNFA}>Convert NFA</button>
-                        <button className="home__form-button" onClick={handleVisualizeDFA}>Convert DFA</button>
+                        <div className="form__button-wrapper">
+                            <button className="home__form-button" onClick={() => handleVisualize('NFA')}>Convert NFA</button>
+                            <button className="home__form-button" onClick={() => handleVisualize('DFA')}>Convert DFA</button>
+                        </div>
                     </form>
                 </div>
 
