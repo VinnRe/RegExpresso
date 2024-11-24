@@ -7,6 +7,7 @@ export const endpoints = {
     fetch: `/api/user/fetch`,
     visualizeNFA: `/api/parse/visualizeNFA`,
     visualizeDFA: `/api/parse/visualizeDFA`,
+    tuples: `/api/parse/tuples`,
     fetchRegex: `/api/parse/fetchAll`,
     saveRegex: `/api/parse/save`,
 } 

@@ -8,6 +8,8 @@ import { getUserData, useAuth } from '../context/AuthContext';
 import useDotScript from '../hooks/useDotScript';
 import FSMV from '../components/GraphComponent/FSMV';
 import useRegexOptions from '../hooks/useRegexOptions';
+import useTuples from '../hooks/useTuples';
+import TupleTable from '../components/Tuples/Tuples';
 
 const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -23,6 +25,8 @@ const Home = () => {
     const { dotScript, fetchDotScript, loading, error } = useDotScript();
     const { fetchRegex, saveRegex } = useRegexOptions();
     const [allRegex, setAllRegex] = useState([]);
+    const { getTuples } = useTuples();
+    const [tupleList, setTupleList] = useState([]);
     let dropdownTimeout;
 
     const toggleMenu = () => {
@@ -138,6 +142,14 @@ const Home = () => {
     const handleVisualize = (type) => {
         if (!validateInput()) return;
         fetchDotScript(inputValue, type);
+
+        // FIX NEEDS 2 CLICKS TO GET DATA
+        
+        const tuples = getTuples(inputValue);
+        const tupleGroup = Object.values(tuples).map((item) => item);
+        setTupleList(tupleGroup);
+        console.log("TUPLES: ", tupleList)
+        
         scrollToConversionSection();
     }
 
@@ -307,7 +319,9 @@ const Home = () => {
 
                 <div className="home__conversion-wrapper">
                     <h2 className="home__conversion-title">5 Tuples</h2>
-                    <div className="home__conversion-display home__conversion-tuples"></div>
+                    <div className="home__conversion-display home__conversion-tuples">
+                        <TupleTable tuples={tupleList} />
+                    </div>
                 </div>
 
                 <div className="home__conversion-wrapper">
