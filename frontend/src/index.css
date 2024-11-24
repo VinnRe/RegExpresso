@@ -74,7 +74,7 @@
   src: url(./assets/fonts/Poppins-Bold.ttf);
 }
 
-*:focus {
+:focus-visible {
   outline: var(--outline);
 }
 
