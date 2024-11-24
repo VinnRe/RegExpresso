@@ -84,7 +84,28 @@ exports.visualizeDFA = catchAsync(async (req, res)=> {
   }
 });
 
-exports.to5Tuples = catchAsync(async (req, res) => {
+exports.to5TuplesNFA = catchAsync(async (req, res) => {
+  const { regEx } = req.body;
+
+  if (!regEx) {
+    return res.status(400).json({ error: 'Regular expression is required' });
+  }
+
+  try {
+    const parser = new regParser.RegParser(regEx); 
+    const fsm = parser.parseToNFA(); 
+    const tuples = fsm.to5Tuple(); 
+
+    return res.json({
+      message: 'FSM successfully converted to 5-tuple',
+      tuples,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+exports.to5TuplesDFA = catchAsync(async (req, res) => {
   const { regEx } = req.body;
 
   if (!regEx) {
@@ -104,6 +125,7 @@ exports.to5Tuples = catchAsync(async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 });
+
 
 exports.saveRegEx = catchAsync(async (req, res) => {
   const { regEx } = req.body;
