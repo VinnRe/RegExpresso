@@ -315,9 +315,15 @@ const Home = () => {
             </main>
 
             <section className="home__conversion-section">
-                <div className="home__conversion-wrapper">
-                    <h2  className="home__conversion-title">Finite State Automata</h2>
+                <div className="home__tuple-history-section">
+                    <div className="tuple__wrapper tuple-history__wrapper">
+                        <h2 className="tuple-history__title">5 Tuples</h2>
+                        {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display yet...</p>}
+                    </div>
+
+                    <div className="home__conversion-wrapper">
                     <div ref={conversionSectionRef} className="home__conversion-display">
+                        <h2  className="home__conversion-title">Finite State Automata</h2>
                         <FSMV dotScript={dotScript} />
                     </div>
                     
@@ -342,35 +348,28 @@ const Home = () => {
                         </div>
                     </form>
                 </div>
-            </section>
-
-            <section className="home__tuple-history-section">
-                <div className="tuple__wrapper tuple-history__wrapper">
-                    <h2 className="tuple-history__title">5 Tuples</h2>
-                    {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display yet...</p>}
-                </div>
-                
-                <div className="history__wrapper tuple-history__wrapper">
-                    <h2 className="tuple-history__title">History</h2>
-                    <ul className='tuple-history__list'>
-                        {allRegex.length > 0 ? (
-                            allRegex.map(({ regEx, _id }) => (
-                                <li 
-                                    className='history__content-list'
-                                    key={_id} 
-                                    onClick={() => handleHistoryClick(regEx)} 
-                                >
-                                    {regEx}
-                                    <button className="button__delete-history" onClick={() => handleDeleteRegex(_id)}>Delete</button>
-                                </li>
-                            ))
-                            ) : (
-                                <p>No regex found.</p>
-                        )}
-                    </ul>
+                    
+                    <div className="history__wrapper tuple-history__wrapper">
+                        <h2 className="tuple-history__title">History</h2>
+                        <ul className='tuple-history__list'>
+                            {allRegex.length > 0 ? (
+                                allRegex.map(({ regEx, _id }) => (
+                                    <li 
+                                        className='history__content-list'
+                                        key={_id} 
+                                        onClick={() => handleHistoryClick(regEx)} 
+                                    >
+                                        {regEx}
+                                        <button className="button__delete-history" onClick={() => handleDeleteRegex(_id)}>Delete</button>
+                                    </li>
+                                ))
+                                ) : (
+                                    <p>No regex found.</p>
+                            )}
+                        </ul>
+                    </div>
                 </div>
             </section>
-
             {overlayVisible && (
                 <Overlay onCancel={hideOverlay} />
             )}
