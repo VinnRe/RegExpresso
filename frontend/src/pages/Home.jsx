@@ -151,9 +151,15 @@ const Home = () => {
             if (type === "NFA") {
                 const tuples = await getNFATuples(inputValue);
                 tupleGroup = tuples.tuples;
+                if (!allRegex.some((regexObj) => regexObj.regEx === inputValue)) {
+                    handleSaveRegex(inputValue)
+                }
             } else if (type === "DFA") {
                 const tuples = await getDFATuples(inputValue);
                 tupleGroup = tuples.tuples;
+                if (!allRegex.some((regexObj) => regexObj.regEx === inputValue)) {
+                    handleSaveRegex(inputValue)
+                }
             } else {
                 console.error("Unknown type:", type);
                 return;
@@ -173,6 +179,7 @@ const Home = () => {
         if (!validateInput()) return;
         saveRegex(inputValue, token);
         console.log("REGEX SAVED: ", inputValue)
+        // ADD INDICATOR THAT REGEX IS SAVED
     }
 
     const handleDeleteRegex = (regexId) => {
@@ -333,7 +340,7 @@ const Home = () => {
                         <div className="form__button-wrapper">
                             <button className="home__form-button" onClick={() => handleVisualize('NFA')}>Convert NFA</button>
                             <button className="home__form-button" onClick={() => handleVisualize('DFA')}>Convert DFA</button>
-                            <button className="home__form-button" onClick={() => handleSaveRegex()}>Save Regex</button>
+                            {/* <button className="home__form-button" onClick={() => handleSaveRegex()}>Save Regex</button> */}
                         </div>
                     </form>
                 </div>
