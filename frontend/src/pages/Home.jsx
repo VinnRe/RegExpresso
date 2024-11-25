@@ -49,13 +49,13 @@ const Home = () => {
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth > 600 && menuOpen) {
-                setMenuOpen(false); 
+                setMenuOpen(false);
             }
         };
 
         window.addEventListener('resize', handleResize);
         return () => {
-            window.removeEventListener('resize', handleResize); 
+            window.removeEventListener('resize', handleResize);
             clearTimeout(dropdownTimeout);
         };
     }, [dropdownTimeout, menuOpen]);
@@ -66,7 +66,7 @@ const Home = () => {
     };
 
     const scrollToConversionSection = () => {
-        conversionSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center'});
+        conversionSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
 
     useEffect(() => {
@@ -91,17 +91,17 @@ const Home = () => {
 
         setTimeout(() => {
             document.querySelector('.overlay__section').classList.add('visible');
-        }, 0); 
+        }, 0);
     }, []);
 
     const hideOverlay = () => {
         const overlay = document.querySelector('.overlay__section');
-        
+
         overlay.classList.add('hidden');
-        
+
         setTimeout(() => {
             setOverlayVisible(false);
-            overlay.classList.remove('visible', 'hidden'); 
+            overlay.classList.remove('visible', 'hidden');
         }, 300);
     };
 
@@ -164,7 +164,7 @@ const Home = () => {
                 console.error("Unknown type:", type);
                 return;
             }
-    
+
             console.log("TUPLE GROUP: ", tupleGroup);
             setTupleList(tupleGroup);
 
@@ -172,7 +172,7 @@ const Home = () => {
             console.error("Error fetching tuples: ", error);
         }
     };
-    
+
 
     const handleSaveRegex = () => {
         if (!validateInput()) return;
@@ -219,17 +219,18 @@ const Home = () => {
                                     e.preventDefault();
                                     showOverlay();
                                 }}>Change password</a>
-                                <a className="account__dropdown-link" href="" 
+                                <a className="account__dropdown-link" href=""
                                     onClick={(e) => {
-                                        e.preventDefault(); 
-                                        handleLogout();}}
+                                        e.preventDefault();
+                                        handleLogout();
+                                    }}
                                 >Logout</a>
                             </div>
                         )}
                     </div>
                 )}
 
-                <span 
+                <span
                     className="material-symbols-outlined home__menu-icon"
                     onClick={toggleMenu}
                     aria-label="Toggle Navigation Menu"
@@ -246,16 +247,17 @@ const Home = () => {
                         ✕
                     </button>
                     {token ? (
-                        <a className="home__dropdown-link" href="" 
+                        <a className="home__dropdown-link" href=""
                             onClick={(e) => {
-                                e.preventDefault(); 
-                                toggleAccountDropdown();}}>
+                                e.preventDefault();
+                                toggleAccountDropdown();
+                            }}>
                             Account
                         </a>
                     ) : (
                         <a className="home__dropdown-link" href="/login">Login</a>
                     )}
-                    
+
                     <a className="home__dropdown-link" href="/about">About us</a>
 
                     {accountDropdownOpen && (
@@ -268,16 +270,18 @@ const Home = () => {
                                 Back
                             </button>
                             <a href="" className="home__dropdown-link">{username}</a>
-                            <a href="" className="home__dropdown-link"onClick={(e) => {
-                                e.preventDefault(); 
-                                showOverlay();}}>
+                            <a href="" className="home__dropdown-link" onClick={(e) => {
+                                e.preventDefault();
+                                showOverlay();
+                            }}>
                                 Change password
                             </a>
-                            <a className="home__dropdown-link" href="" 
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        handleLogout();}}
-                                >Logout</a>
+                            <a className="home__dropdown-link" href=""
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleLogout();
+                                }}
+                            >Logout</a>
                         </div>
                     )}
                 </div>
@@ -293,14 +297,14 @@ const Home = () => {
                     <p className="home__main-description">Transform complex regular expressions into clear, visual finite automata.</p>
                     <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
                         <div className={`home__input-container ${hasError ? 'input-error' : ''}`} >
-                            <input 
+                            <input
                                 id="regex-input-1"
-                                className="home__form-input" 
-                                type="text" 
-                                placeholder=" " 
+                                className="home__form-input"
+                                type="text"
+                                placeholder=" "
                                 value={inputValue}
                                 onChange={handleInputChange}
-                                required 
+                                required
                             />
                             <label htmlFor="regex-input-1" className={`home__form-label--floating ${hasError ? 'label-error' : ''}`}>
                                 Enter regular expression
@@ -315,28 +319,22 @@ const Home = () => {
             </main>
 
             <section className="home__conversion-section">
-                <div className="home__tuple-history-section">
-                    <div className="tuple__wrapper tuple-history__wrapper">
-                        <h2 className="tuple-history__title">5 Tuples</h2>
-                        {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display yet...</p>}
-                    </div>
-
-                    <div className="home__conversion-wrapper">
+                <div className="home__conversion-wrapper">
                     <div ref={conversionSectionRef} className="home__conversion-display">
-                        <h2  className="home__conversion-title">Finite State Automata</h2>
+                        <h2 className="home__conversion-title">Finite State Automata</h2>
                         <FSMV dotScript={dotScript} />
                     </div>
-                    
+
                     <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
                         <div className={`home__input-container ${hasError ? 'input-error' : ''}`}>
                             <input
                                 id="regex-input-2"
-                                className="home__form-input" 
-                                type="text" 
+                                className="home__form-input"
+                                type="text"
                                 placeholder=" "
                                 value={inputValue}
-                                onChange={handleInputChange} 
-                                required 
+                                onChange={handleInputChange}
+                                required
                             />
                             <label htmlFor="regex-input-2" className={`home__form-label--floating ${hasError ? 'label-error' : ''}`}>
                                 Enter regular expression
@@ -348,23 +346,29 @@ const Home = () => {
                         </div>
                     </form>
                 </div>
-                    
+
+                <div className="home__tuple-history-section">
+                    <div className="tuple__wrapper tuple-history__wrapper">
+                        <h2 className="tuple-history__title">5 Tuples</h2>
+                        {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display yet...</p>}
+                    </div>
+
                     <div className="history__wrapper tuple-history__wrapper">
                         <h2 className="tuple-history__title">History</h2>
                         <ul className='tuple-history__list'>
                             {allRegex.length > 0 ? (
                                 allRegex.map(({ regEx, _id }) => (
-                                    <li 
+                                    <li
                                         className='history__content-list'
-                                        key={_id} 
-                                        onClick={() => handleHistoryClick(regEx)} 
+                                        key={_id}
+                                        onClick={() => handleHistoryClick(regEx)}
                                     >
                                         {regEx}
                                         <button className="button__delete-history" onClick={() => handleDeleteRegex(_id)}>Delete</button>
                                     </li>
                                 ))
-                                ) : (
-                                    <p>No regex found.</p>
+                            ) : (
+                                <p>No regex found.</p>
                             )}
                         </ul>
                     </div>
@@ -373,7 +377,7 @@ const Home = () => {
             {overlayVisible && (
                 <Overlay onCancel={hideOverlay} />
             )}
-            
+
             <Footer />
         </div>
     );
