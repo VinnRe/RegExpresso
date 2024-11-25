@@ -23,9 +23,9 @@ const Home = () => {
     const { handleLogout } = useAuth();
     const token = localStorage.getItem('token')
     const { dotScript, fetchDotScript, loading, error } = useDotScript();
-    const { fetchRegex, saveRegex } = useRegexOptions();
+    const { fetchRegex, saveRegex, deleteRegex } = useRegexOptions();
     const [allRegex, setAllRegex] = useState([]);
-    const { getTuples } = useTuples();
+    const { getDFATuples, getNFATuples } = useTuples();
     const [tupleList, setTupleList] = useState([]);
     let dropdownTimeout;
 
@@ -123,8 +123,12 @@ const Home = () => {
 
         const getAllRegex = async () => {
             const data = await fetchRegex(token);
-            const regexList = data.data.automatons.map((item) => item.regEx);
+            const regexList = data.data.automatons.map((item) => ({
+                regEx: item.regEx,
+                _id: item._id,
+            }));
             setAllRegex(regexList)
+            console.log(regexList)
         }
 
         getAllRegex();
@@ -139,24 +143,42 @@ const Home = () => {
         return true;
     }
 
-    const handleVisualize = (type) => {
+    const handleVisualize = async (type) => {
         if (!validateInput()) return;
         fetchDotScript(inputValue, type);
+    
+        try {
+            let tupleGroup = [];
+            if (type === "NFA") {
+                const tuples = await getNFATuples(inputValue);
+                tupleGroup = [tuples.tuples];
+            } else if (type === "DFA") {
+                const tuples = await getDFATuples(inputValue);
+                tupleGroup = [tuples.tuples];
+            } else {
+                console.error("Unknown type:", type);
+                return;
+            }
+    
+            console.log("TUPLE GROUP: ", tupleGroup);
+            setTupleList(tupleGroup);
 
-        // FIX NEEDS 2 CLICKS TO GET DATA
-        
-        const tuples = getTuples(inputValue);
-        const tupleGroup = Object.values(tuples).map((item) => item);
-        setTupleList(tupleGroup);
-        console.log("TUPLES: ", tupleList)
-        
-        scrollToConversionSection();
-    }
+            scrollToConversionSection();
+        } catch (error) {
+            console.error("Error fetching tuples: ", error);
+        }
+    };
+    
 
     const handleSaveRegex = () => {
         if (!validateInput()) return;
         saveRegex(inputValue, token);
         console.log("REGEX SAVED: ", inputValue)
+    }
+
+    const handleDeleteRegex = (regexId) => {
+        deleteRegex(regexId, token)
+        // ADD INDICATOR THAT REGEX IS DELTED
     }
 
     const handleHistoryClick = (regexValue) => {
@@ -329,14 +351,15 @@ const Home = () => {
                     <div className="home__conversion-display">
                         <ul className='home__conversion-histrory-list'>
                             {allRegex.length > 0 ? (
-                                allRegex.map((regexItem, index) => (
+                                allRegex.map(({ regEx, _id }) => (
                                     <li 
-                                        key={index} 
-                                        onClick={() => handleHistoryClick(regexItem)} 
+                                        key={_id} 
+                                        onClick={() => handleHistoryClick(regEx)} 
                                         style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}
                                         className='home__conversion-history-regex'
                                     >
-                                        {regexItem}
+                                        {regEx}
+                                        <button className="delete__button-regex" onClick={() => handleDeleteRegex(_id)}>X</button>
                                     </li>
                                 ))
                             ) : (

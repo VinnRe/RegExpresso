@@ -38,15 +38,37 @@ const useRegexOptions = () => {
                 throw new Error(`Error: ${response.status}`);
             }
 
+            console.log(response)
+
             // ADD A RETRUN FUNCTION THAT WOULD SAY THAT THE REGEX IS SAVED
         } catch (error) {
             console.error("Failed to save regex:", error);
             throw error;
         }
     };
+
+    const deleteRegex = async (regexId, token) => {
+        try {
+            const response = await fetch(endpoints.deleteRegex + regexId, {
+                method: "DELETE",
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                 },
+            })
+
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+
+        } catch (error) {
+            console.error("Failed to delte regex: ", error)
+            throw error
+        }
+    }
     
 
-    return { fetchRegex, saveRegex }
+    return { fetchRegex, saveRegex, deleteRegex }
 }
 
 export default useRegexOptions
