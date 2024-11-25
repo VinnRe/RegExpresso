@@ -291,7 +291,7 @@ const Home = () => {
 
                 <div className="home__main-content">
                     <p className="home__main-description">Transform complex regular expressions into clear, visual finite automata.</p>
-                    <form action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
+                    <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
                         <div className={`home__input-container ${hasError ? 'input-error' : ''}`} >
                             <input 
                                 id="regex-input-1"
@@ -327,7 +327,7 @@ const Home = () => {
                         <FSMV dotScript={dotScript} />
                     </div>
                     
-                    <form  action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
+                    <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
                         <div className={`home__input-container ${hasError ? 'input-error' : ''}`}>
                             <input
                                 id="regex-input-2"
