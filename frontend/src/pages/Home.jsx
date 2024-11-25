@@ -120,19 +120,28 @@ const Home = () => {
             }
         };
 
-        const getAllRegex = async () => {
-            const data = await fetchRegex(token);
-            const regexList = data.data.automatons.map((item) => ({
-                regEx: item.regEx,
-                _id: item._id,
-            }));
-            setAllRegex(regexList)
-            console.log(regexList)
-        }
-
-        getAllRegex();
         fetchUsername();
     }, []);
+
+    const getAllRegex = useCallback(async () => {
+        if (token) {
+            try {
+                const data = await fetchRegex(token);
+                const regexList = data.data.automatons.map((item) => ({
+                    regEx: item.regEx,
+                    _id: item._id,
+                }));
+                setAllRegex(regexList);
+                console.log("Fetched regex history:", regexList);
+            } catch (error) {
+                console.error("Error fetching regex history:", error);
+            }
+        }
+    }, [token]);
+
+    useEffect(() => {
+        getAllRegex();
+    }, [getAllRegex]);
 
     const validateInput = () => {
         if (!inputValue.trim()) {
@@ -152,39 +161,47 @@ const Home = () => {
                 const tuples = await getNFATuples(inputValue);
                 tupleGroup = tuples.tuples;
                 if (!allRegex.some((regexObj) => regexObj.regEx === inputValue)) {
-                    handleSaveRegex(inputValue)
+                    await handleSaveRegex(inputValue);
                 }
             } else if (type === "DFA") {
                 const tuples = await getDFATuples(inputValue);
                 tupleGroup = tuples.tuples;
                 if (!allRegex.some((regexObj) => regexObj.regEx === inputValue)) {
-                    handleSaveRegex(inputValue)
+                    await handleSaveRegex(inputValue);
                 }
             } else {
                 console.error("Unknown type:", type);
                 return;
             }
-
+    
             console.log("TUPLE GROUP: ", tupleGroup);
             setTupleList(tupleGroup);
-
         } catch (error) {
             console.error("Error fetching tuples: ", error);
         }
     };
 
 
-    const handleSaveRegex = () => {
-        if (!validateInput()) return;
-        saveRegex(inputValue, token);
-        console.log("REGEX SAVED: ", inputValue)
-        // ADD INDICATOR THAT REGEX IS SAVED
+    const handleSaveRegex = async () => {
+        try {
+            if (!validateInput()) return;
+            await saveRegex(inputValue, token);
+            console.log("REGEX SAVED: ", inputValue)
+            await getAllRegex();
+        } catch (error) {
+            console.error("Error saving regex:", error);
+        }
     }
 
-    const handleDeleteRegex = (regexId) => {
-        deleteRegex(regexId, token)
-        // ADD INDICATOR THAT REGEX IS DELTED
-    }
+    const handleDeleteRegex = async (regexId) => {
+        try {
+            await deleteRegex(regexId, token);
+            console.log("Deleted regex with ID:", regexId);
+            await getAllRegex();
+        } catch (error) {
+            console.error("Error deleting regex:", error);
+        }
+    };
 
     const handleHistoryClick = (regexValue) => {
         setInputValue(regexValue);
@@ -319,6 +336,74 @@ const Home = () => {
             </main>
 
             <section className="home__conversion-section">
+                <div className="tuple__wrapper tuple-history__wrapper">
+                    <h2 className="tuple-history__title">5 Tuples</h2>
+                    {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display yet...</p>}
+                </div>
+                
+                <div className="home__conversion-wrapper">
+                    <div ref={conversionSectionRef} className="home__conversion-display">
+                        <h2 className="home__conversion-title">Finite State Automata</h2>
+                        <FSMV dotScript={dotScript} />
+                    </div>
+
+                    <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
+                        <div className={`home__input-container ${hasError ? 'input-error' : ''}`}>
+                            <input
+                                id="regex-input-2"
+                                className="home__form-input"
+                                type="text"
+                                placeholder=" "
+                                value={inputValue}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <label htmlFor="regex-input-2" className={`home__form-label--floating ${hasError ? 'label-error' : ''}`}>
+                                Enter regular expression
+                            </label>
+                        </div>
+                        <div className="form__button-wrapper">
+                            <button className="home__form-button" onClick={() => handleVisualize('NFA')}>Convert NFA</button>
+                            <button className="home__form-button" onClick={() => handleVisualize('DFA')}>Convert DFA</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div className="home__tuple-history-section">
+                    {token ? (
+                        <div className="history__wrapper tuple-history__wrapper">
+                        <h2 className="tuple-history__title">History</h2>
+                        <ul className="tuple-history__list">
+                            {allRegex.length > 0 ? (
+                                allRegex.map(({ regEx, _id }) => (
+                                <div key={_id} className="history__item-wrapper">
+                                    <li
+                                    className="history__content-list"
+                                    onClick={() => handleHistoryClick(regEx)}
+                                    >
+                                    {regEx}
+                                    </li>
+                                    <button
+                                    className="button__delete-history"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleDeleteRegex(_id);
+                                    }}
+                                    >
+                                    Delete
+                                    </button>
+                                </div>
+                                ))
+                            ) : (
+                                <p>No regex found.</p>
+                            )}
+                            </ul>
+                    </div>
+                    ) : null }
+                </div>
+            </section>
+
+            <section className="home__conversion-section-mobile">
                 <div className="home__conversion-wrapper">
                     <div ref={conversionSectionRef} className="home__conversion-display">
                         <h2 className="home__conversion-title">Finite State Automata</h2>
@@ -353,25 +438,36 @@ const Home = () => {
                         {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display yet...</p>}
                     </div>
 
-                    <div className="history__wrapper tuple-history__wrapper">
+                    {token ? (
+                        <div className="history__wrapper tuple-history__wrapper">
                         <h2 className="tuple-history__title">History</h2>
-                        <ul className='tuple-history__list'>
+                        <ul className="tuple-history__list">
                             {allRegex.length > 0 ? (
                                 allRegex.map(({ regEx, _id }) => (
+                                <div key={_id} className="history__item-wrapper">
                                     <li
-                                        className='history__content-list'
-                                        key={_id}
-                                        onClick={() => handleHistoryClick(regEx)}
+                                    className="history__content-list"
+                                    onClick={() => handleHistoryClick(regEx)}
                                     >
-                                        {regEx}
-                                        <button className="button__delete-history" onClick={() => handleDeleteRegex(_id)}>Delete</button>
+                                    {regEx}
                                     </li>
+                                    <button
+                                    className="button__delete-history"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleDeleteRegex(_id);
+                                    }}
+                                    >
+                                    Delete
+                                    </button>
+                                </div>
                                 ))
                             ) : (
                                 <p>No regex found.</p>
                             )}
-                        </ul>
+                            </ul>
                     </div>
+                    ) : null }
                 </div>
             </section>
             {overlayVisible && (
