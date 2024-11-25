@@ -4,6 +4,7 @@ export const endpoints = {
     login: `/api/user/login`,
     signup: `/api/user/signup`,
     logout: `/api/user/logout`,
+    updatePassword: `/api/user/update/password`,
     fetch: `/api/user/fetch`,
     visualizeNFA: `/api/parse/visualizeNFA`,
     visualizeDFA: `/api/parse/visualizeDFA`,
