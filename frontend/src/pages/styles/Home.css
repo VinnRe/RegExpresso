@@ -355,13 +355,13 @@
 
 .home__conversion-title {
     font-family: 'Poppins Bold';
-    font-size: clamp(2rem, 3.5vw, 2.82rem);
+    font-size: clamp(2rem, 3.5vw, 2rem);
     text-wrap: balance;
     text-align: center;
 }
 
 .home__conversion-display {
-    padding: 1rem;
+    padding: 2rem;
     height: 60vh;
     width: min(70dvw, 520px);
     background-color: var(--bg-fsa);

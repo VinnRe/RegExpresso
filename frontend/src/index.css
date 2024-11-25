@@ -104,3 +104,15 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--clr-dark-brown);
 }
+
+/* Apply styles when the input is autofilled */
+input:-webkit-autofill {
+    background-color: var(--ipt-bg-clr-unfocused); /* Change the background color */
+    color: var(--ipt-txt-clr); /* Change the text color */
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    transition: background-color 5000s ease-in-out 0s;
+}
