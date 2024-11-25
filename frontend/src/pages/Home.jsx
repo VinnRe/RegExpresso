@@ -26,11 +26,18 @@ const Home = () => {
     const [allRegex, setAllRegex] = useState([]);
     const { getDFATuples, getNFATuples } = useTuples();
     const [tupleList, setTupleList] = useState(null);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 769);
     let dropdownTimeout;
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth <= 769);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const toggleAccountDropdown = () => setAccountDropdownOpen(!accountDropdownOpen);
 
@@ -334,142 +341,144 @@ const Home = () => {
                     </form>
                 </div>
             </main>
+            {isMobile ? (
+                <section className="home__conversion-section-mobile">
+                    <div className="home__conversion-wrapper">
+                        <div ref={conversionSectionRef} className="home__conversion-display">
+                            <h2 className="home__conversion-title">Finite State Automata</h2>
+                            <FSMV dotScript={dotScript} />
+                        </div>
 
-            <section className="home__conversion-section">
-                <div className="tuple__wrapper tuple-history__wrapper">
-                    <h2 className="tuple-history__title">5 Tuples</h2>
-                    {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display yet...</p>}
-                </div>
-                
-                <div className="home__conversion-wrapper">
-                    <div ref={conversionSectionRef} className="home__conversion-display">
-                        <h2 className="home__conversion-title">Finite State Automata</h2>
-                        <FSMV dotScript={dotScript} />
+                        <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
+                            <div className={`home__input-container ${hasError ? 'input-error' : ''}`}>
+                                <input
+                                    id="regex-input-2"
+                                    className="home__form-input"
+                                    type="text"
+                                    placeholder=" "
+                                    value={inputValue}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                                <label htmlFor="regex-input-2" className={`home__form-label--floating ${hasError ? 'label-error' : ''}`}>
+                                    Enter regular expression
+                                </label>
+                            </div>
+                            <div className="form__button-wrapper">
+                                <button className="home__form-button" onClick={() => handleVisualize('NFA')}>Convert NFA</button>
+                                <button className="home__form-button" onClick={() => handleVisualize('DFA')}>Convert DFA</button>
+                            </div>
+                        </form>
                     </div>
 
-                    <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
-                        <div className={`home__input-container ${hasError ? 'input-error' : ''}`}>
-                            <input
-                                id="regex-input-2"
-                                className="home__form-input"
-                                type="text"
-                                placeholder=" "
-                                value={inputValue}
-                                onChange={handleInputChange}
-                                required
-                            />
-                            <label htmlFor="regex-input-2" className={`home__form-label--floating ${hasError ? 'label-error' : ''}`}>
-                                Enter regular expression
-                            </label>
+                    <div className="home__tuple-history-section">
+                        <div className="tuple__wrapper tuple-history__wrapper">
+                            <h2 className="tuple-history__title">5 Tuples</h2>
+                            {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display yet...</p>}
                         </div>
-                        <div className="form__button-wrapper">
-                            <button className="home__form-button" onClick={() => handleVisualize('NFA')}>Convert NFA</button>
-                            <button className="home__form-button" onClick={() => handleVisualize('DFA')}>Convert DFA</button>
-                        </div>
-                    </form>
-                </div>
 
-                <div className="home__tuple-history-section">
-                    {token ? (
-                        <div className="history__wrapper tuple-history__wrapper">
-                        <h2 className="tuple-history__title">History</h2>
-                        <ul className="tuple-history__list">
-                            {allRegex.length > 0 ? (
-                                allRegex.map(({ regEx, _id }) => (
-                                <div key={_id} className="history__item-wrapper">
-                                    <li
-                                    className="history__content-list"
-                                    onClick={() => handleHistoryClick(regEx)}
-                                    >
-                                    {regEx}
-                                    </li>
-                                    <button
-                                    className="button__delete-history"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleDeleteRegex(_id);
-                                    }}
-                                    >
-                                    Delete
-                                    </button>
-                                </div>
-                                ))
-                            ) : (
-                                <p>No regex found.</p>
-                            )}
-                            </ul>
+                        {token ? (
+                            <div className="history__wrapper tuple-history__wrapper">
+                            <h2 className="tuple-history__title">History</h2>
+                            <ul className="tuple-history__list">
+                                {allRegex.length > 0 ? (
+                                    allRegex.map(({ regEx, _id }) => (
+                                    <div key={_id} className="history__item-wrapper">
+                                        <li
+                                        className="history__content-list"
+                                        onClick={() => handleHistoryClick(regEx)}
+                                        >
+                                        {regEx}
+                                        </li>
+                                        <button
+                                        className="button__delete-history"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleDeleteRegex(_id);
+                                        }}
+                                        >
+                                        Delete
+                                        </button>
+                                    </div>
+                                    ))
+                                ) : (
+                                    <p>No regex found.</p>
+                                )}
+                                </ul>
+                        </div>
+                        ) : null }
                     </div>
-                    ) : null }
-                </div>
-            </section>
-
-            <section className="home__conversion-section-mobile">
-                <div className="home__conversion-wrapper">
-                    <div ref={conversionSectionRef} className="home__conversion-display">
-                        <h2 className="home__conversion-title">Finite State Automata</h2>
-                        <FSMV dotScript={dotScript} />
-                    </div>
-
-                    <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
-                        <div className={`home__input-container ${hasError ? 'input-error' : ''}`}>
-                            <input
-                                id="regex-input-2"
-                                className="home__form-input"
-                                type="text"
-                                placeholder=" "
-                                value={inputValue}
-                                onChange={handleInputChange}
-                                required
-                            />
-                            <label htmlFor="regex-input-2" className={`home__form-label--floating ${hasError ? 'label-error' : ''}`}>
-                                Enter regular expression
-                            </label>
-                        </div>
-                        <div className="form__button-wrapper">
-                            <button className="home__form-button" onClick={() => handleVisualize('NFA')}>Convert NFA</button>
-                            <button className="home__form-button" onClick={() => handleVisualize('DFA')}>Convert DFA</button>
-                        </div>
-                    </form>
-                </div>
-
-                <div className="home__tuple-history-section">
+                </section>
+            ) : (
+                <section className="home__conversion-section">
                     <div className="tuple__wrapper tuple-history__wrapper">
                         <h2 className="tuple-history__title">5 Tuples</h2>
                         {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display yet...</p>}
                     </div>
+                    
+                    <div className="home__conversion-wrapper">
+                        <div ref={conversionSectionRef} className="home__conversion-display">
+                            <h2 className="home__conversion-title">Finite State Automata</h2>
+                            <FSMV dotScript={dotScript} />
+                        </div>
 
-                    {token ? (
-                        <div className="history__wrapper tuple-history__wrapper">
-                        <h2 className="tuple-history__title">History</h2>
-                        <ul className="tuple-history__list">
-                            {allRegex.length > 0 ? (
-                                allRegex.map(({ regEx, _id }) => (
-                                <div key={_id} className="history__item-wrapper">
-                                    <li
-                                    className="history__content-list"
-                                    onClick={() => handleHistoryClick(regEx)}
-                                    >
-                                    {regEx}
-                                    </li>
-                                    <button
-                                    className="button__delete-history"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleDeleteRegex(_id);
-                                    }}
-                                    >
-                                    Delete
-                                    </button>
-                                </div>
-                                ))
-                            ) : (
-                                <p>No regex found.</p>
-                            )}
-                            </ul>
+                        <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
+                            <div className={`home__input-container ${hasError ? 'input-error' : ''}`}>
+                                <input
+                                    id="regex-input-2"
+                                    className="home__form-input"
+                                    type="text"
+                                    placeholder=" "
+                                    value={inputValue}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                                <label htmlFor="regex-input-2" className={`home__form-label--floating ${hasError ? 'label-error' : ''}`}>
+                                    Enter regular expression
+                                </label>
+                            </div>
+                            <div className="form__button-wrapper">
+                                <button className="home__form-button" onClick={() => handleVisualize('NFA')}>Convert NFA</button>
+                                <button className="home__form-button" onClick={() => handleVisualize('DFA')}>Convert DFA</button>
+                            </div>
+                        </form>
                     </div>
-                    ) : null }
-                </div>
-            </section>
+
+                    <div className="home__tuple-history-section">
+                        {token ? (
+                            <div className="history__wrapper tuple-history__wrapper">
+                            <h2 className="tuple-history__title">History</h2>
+                            <ul className="tuple-history__list">
+                                {allRegex.length > 0 ? (
+                                    allRegex.map(({ regEx, _id }) => (
+                                    <div key={_id} className="history__item-wrapper">
+                                        <li
+                                        className="history__content-list"
+                                        onClick={() => handleHistoryClick(regEx)}
+                                        >
+                                        {regEx}
+                                        </li>
+                                        <button
+                                        className="button__delete-history"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleDeleteRegex(_id);
+                                        }}
+                                        >
+                                        Delete
+                                        </button>
+                                    </div>
+                                    ))
+                                ) : (
+                                    <p>No regex found.</p>
+                                )}
+                                </ul>
+                        </div>
+                        ) : null }
+                    </div>
+                </section>
+            )}
+            
             {overlayVisible && (
                 <Overlay onCancel={hideOverlay} />
             )}
