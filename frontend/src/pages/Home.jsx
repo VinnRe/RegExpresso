@@ -3,13 +3,12 @@ import './styles/Home.css';
 import Logo from '../assets/header_regex_only.svg';
 import Overlay from '../components/Overlay/Overlay';
 import Footer from '../components/Footer/Footer';
-import { endpoints } from '../config/config';
 import { getUserData, useAuth } from '../context/AuthContext';
 import useDotScript from '../hooks/useDotScript';
 import FSMV from '../components/GraphComponent/FSMV';
 import useRegexOptions from '../hooks/useRegexOptions';
 import useTuples from '../hooks/useTuples';
-import TupleTable from '../components/Tuples/Tuples';
+import TuplesTable from '../components/Tuples/TuplesTable';
 
 const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -26,7 +25,7 @@ const Home = () => {
     const { fetchRegex, saveRegex, deleteRegex } = useRegexOptions();
     const [allRegex, setAllRegex] = useState([]);
     const { getDFATuples, getNFATuples } = useTuples();
-    const [tupleList, setTupleList] = useState([]);
+    const [tupleList, setTupleList] = useState(null);
     let dropdownTimeout;
 
     const toggleMenu = () => {
@@ -148,13 +147,13 @@ const Home = () => {
         fetchDotScript(inputValue, type);
     
         try {
-            let tupleGroup = [];
+            let tupleGroup;
             if (type === "NFA") {
                 const tuples = await getNFATuples(inputValue);
-                tupleGroup = [tuples.tuples];
+                tupleGroup = tuples.tuples;
             } else if (type === "DFA") {
                 const tuples = await getDFATuples(inputValue);
-                tupleGroup = [tuples.tuples];
+                tupleGroup = tuples.tuples;
             } else {
                 console.error("Unknown type:", type);
                 return;
@@ -342,7 +341,7 @@ const Home = () => {
                 <div className="home__conversion-wrapper">
                     <h2 className="home__conversion-title">5 Tuples</h2>
                     <div className="home__conversion-display home__conversion-tuples">
-                        <TupleTable tuples={tupleList} />
+                    {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display.</p>}
                     </div>
                 </div>
 
