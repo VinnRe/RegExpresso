@@ -360,13 +360,97 @@
 }
 
 .home__conversion-display {
-    height: 50vh;
-    width: min(70dvw, 720px);
+    height: 40vh;
+    width: min(70dvw, 520px);
     background-color: var(--bg-fsa);
-    border-radius: var(--brdr-rad);
+    border-radius: 30px;
     box-shadow: 0 0 12px var(--clr-black) inset;
 }
 
+.home__tuple-history-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tuple-history__wrapper {
+    max-height: 510px;
+    padding: 2rem;
+    border-radius: 30px;
+    background-color: var(--bg-fsa);
+    box-shadow: 0 0 12px var(--clr-black) inset;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tuple-history__wrapper p {
+    font-family: 'Poppins Medium', sans-serif;
+    text-align: center;
+}
+
+.tuple__wrapper {
+    width: 400px;
+}
+
+.history__wrapper {
+    width: 300px;
+}
+
+.tuple-history__title {
+    font-family: 'Poppins Bold', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    text-align: center;
+}
+
+.tuple-history__list {
+    min-height: 50px; 
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+}
+
+.tuple__content-list, .history__content-list {
+    font-size: clamp(0.775rem, 1.8vw, 1.25rem);
+    padding: 0.75em;
+    border-radius: var(--brdr-rad);
+    background-color: var(--btn-bg-clr-unfocused);
+    color: var(--btn-txt-clr);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history__content-list {
+    cursor: pointer;
+    transition: background-color 0.3s ease, scale 0.3s ease;
+}
+
+.history__content-list:hover {
+    background-color: var(--btn-bg-clr-focused);
+}
+
+.history__content-list:active {
+    scale: 1.1;
+}
+
+.button__delete-history {
+    font-family: 'Poppins Medium', sans-serif;
+    background: none;
+    border: none;
+    color: var(--ipt-placeholder-clr);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.button__delete-history:hover {
+    color: red;
+}
 
 @media (width <= 600px) { 
     .home__main-content,

@@ -92,6 +92,7 @@ body {
 /* Track */
 ::-webkit-scrollbar-track {
   background: var(--clr-light-brown);
+  background: #a9876ffe;
 }
 
 /* Handle */

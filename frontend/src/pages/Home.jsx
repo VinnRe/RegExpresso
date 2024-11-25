@@ -145,7 +145,7 @@ const Home = () => {
     const handleVisualize = async (type) => {
         if (!validateInput()) return;
         fetchDotScript(inputValue, type);
-    
+        scrollToConversionSection();
         try {
             let tupleGroup;
             if (type === "NFA") {
@@ -168,7 +168,6 @@ const Home = () => {
             console.log("TUPLE GROUP: ", tupleGroup);
             setTupleList(tupleGroup);
 
-            scrollToConversionSection();
         } catch (error) {
             console.error("Error fetching tuples: ", error);
         }
@@ -317,7 +316,7 @@ const Home = () => {
 
             <section className="home__conversion-section">
                 <div className="home__conversion-wrapper">
-                    <h2  className="home__conversion-title">Finite State Automata Diagram</h2>
+                    <h2  className="home__conversion-title">Finite State Automata</h2>
                     <div ref={conversionSectionRef} className="home__conversion-display">
                         <FSMV dotScript={dotScript} />
                     </div>
@@ -340,39 +339,35 @@ const Home = () => {
                         <div className="form__button-wrapper">
                             <button className="home__form-button" onClick={() => handleVisualize('NFA')}>Convert NFA</button>
                             <button className="home__form-button" onClick={() => handleVisualize('DFA')}>Convert DFA</button>
-                            {/* <button className="home__form-button" onClick={() => handleSaveRegex()}>Save Regex</button> */}
                         </div>
                     </form>
                 </div>
+            </section>
 
-                <div className="home__conversion-wrapper">
-                    <h2 className="home__conversion-title">5 Tuples</h2>
-                    <div className="home__conversion-display home__conversion-tuples">
-                    {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display.</p>}
-                    </div>
+            <section className="home__tuple-history-section">
+                <div className="tuple__wrapper tuple-history__wrapper">
+                    <h2 className="tuple-history__title">5 Tuples</h2>
+                    {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display yet...</p>}
                 </div>
-
-                <div className="home__conversion-wrapper">
-                    <h2 className="home__conversion-title">Your Previous Conversions</h2>
-                    <div className="home__conversion-display">
-                        <ul className='home__conversion-histrory-list'>
-                            {allRegex.length > 0 ? (
-                                allRegex.map(({ regEx, _id }) => (
-                                    <li 
-                                        key={_id} 
-                                        onClick={() => handleHistoryClick(regEx)} 
-                                        style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}
-                                        className='home__conversion-history-regex'
-                                    >
-                                        {regEx}
-                                        <button className="delete__button-regex" onClick={() => handleDeleteRegex(_id)}>X</button>
-                                    </li>
-                                ))
+                
+                <div className="history__wrapper tuple-history__wrapper">
+                    <h2 className="tuple-history__title">History</h2>
+                    <ul className='tuple-history__list'>
+                        {allRegex.length > 0 ? (
+                            allRegex.map(({ regEx, _id }) => (
+                                <li 
+                                    className='history__content-list'
+                                    key={_id} 
+                                    onClick={() => handleHistoryClick(regEx)} 
+                                >
+                                    {regEx}
+                                    <button className="button__delete-history" onClick={() => handleDeleteRegex(_id)}>Delete</button>
+                                </li>
+                            ))
                             ) : (
                                 <p>No regex found.</p>
-                            )}
-                        </ul>
-                    </div>
+                        )}
+                    </ul>
                 </div>
             </section>
 
