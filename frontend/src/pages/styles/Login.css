@@ -192,7 +192,7 @@
     }
 }
 
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 768px) {
     .loginBody {
         background-image: url(../../assets/bg_log_768.svg);
         background-size: cover;
