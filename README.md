@@ -24,6 +24,15 @@ Copyright © 2024 TripleThreat
 
 -------------
 
+## How the Web Application Looks
+
+![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/login_page.png)
+![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/signup_page.png)
+![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/home_page.png)
+![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/about_page.png)
+
+-------------
+
 ## How to Setup
 ### Clone the repository
 We are assuming that you are going to use Visual Studio Code (VSCode) and have the at least node v22.11.0 and npm v10.9.0 installed.
