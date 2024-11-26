@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { endpoints } from "../config/config"
 
 const useRegexOptions = () => {
@@ -40,7 +39,6 @@ const useRegexOptions = () => {
 
             console.log(response)
 
-            // ADD A RETRUN FUNCTION THAT WOULD SAY THAT THE REGEX IS SAVED
         } catch (error) {
             console.error("Failed to save regex:", error);
             throw error;

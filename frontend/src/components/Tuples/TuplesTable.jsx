@@ -44,7 +44,7 @@ TuplesTable.propTypes = {
         Sigma: PropTypes.arrayOf(PropTypes.string).isRequired,
         Delta: PropTypes.arrayOf(
             PropTypes.arrayOf(
-                PropTypes.oneOfType([PropTypes.string, PropTypes.number]) // Allow strings or numbers in Delta
+                PropTypes.oneOfType([PropTypes.string, PropTypes.number])
             )
         ).isRequired,
         q0: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
