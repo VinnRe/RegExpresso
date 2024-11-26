@@ -11,6 +11,8 @@ Copyright © 2024 TripleThreat
 
 [Alexander Penuliar - Backend](https://github.com/Exuille)
 
+-------------
+
 ## Features
 - Login / Signup System
 - Password change of user
@@ -19,6 +21,8 @@ Copyright © 2024 TripleThreat
 - Parsing of dotscript received from the inputted Regular Expression
 - 5 Tuples Generation
 - History of typed Regular Expressions
+
+-------------
 
 ## How to Setup
 ### Clone the repository
@@ -29,6 +33,8 @@ Use this url to clone the project
 > https://github.com/VinnRe/RegExpresso.git
 
 Or use the "Open in Github Desktop"
+
+-------------
 
 ### Frontend Setup
 Open the frontend folder in the CLI
@@ -46,7 +52,9 @@ OR
 Then we can open up the web application
 
 `npm run dev`
+
 -------------
+
 ### Backend Setup
 Open up another cmd terminal or press " CTRL + SHIFT + ` "
 
@@ -77,6 +85,7 @@ After everything is done launch the server
 `npm start`
 
 With all that up and running you can now use the application and try out all the features.
+
 -------------
 
 # Have Fun using our web application!
