@@ -1,46 +1,62 @@
-  var DOTSCRIPTHEADER = 'digraph finite_state_machine {rankdir = LR;';
-  var DOTSCRIPTEND = '}';
+const DOTSCRIPTHEADER = 'digraph finite_state_machine {rankdir = LR;';
+const DOTSCRIPTEND = '}';
 
-  function escapeCharacter(token) {
-    switch (token) {
-      case ' ':
-        return '[space]';
-      case '\n':
-        return '\n';
-      case '\t':
-        return '\t';
-      case '\r':
-        return '\r';
-      case '\\':
-        return '[\\]';
-    }
-    return token;
-  }
-
-  exports.toDotScript = function(fsm) {
-    var transitionDotScript = '  node [shape = circle, color="#e8cdad"];'; // Add fill and edge colors here
-    for (var from_id in fsm.transitions) {
-      for (var to_id in fsm.transitions[from_id]) {
-        transitionDotScript += '  ' + [from_id] + '->' + to_id + ' [label="' + escapeCharacter(fsm.transitions[from_id][to_id]) + '", color="#e8cdad", fontcolor="#e8cdad"];'; // Edge color
-      }
-    }
-
-    var initialStatesDotScript = '';
-    var initialStatesStartDotScript = '  node [shape = plaintext];';
-    var acceptStatesDotScript = '';
-    
-    for (var i = 0; i < fsm.numOfStates; ++i) {
-      if (fsm.acceptStates.indexOf(i.toString()) != -1) {
-        acceptStatesDotScript += '  node [shape = doublecircle, color="#e8cdad",fontcolor="#e8cdad"]; ' + i + ';'; // Fill and edge colors for accept state
-      }
-      if (fsm.initialState == i.toString()) {
-        initialStatesStartDotScript += '  "" -> ' + i + ' [label = "start", color="#e8cdad",fontcolor="#e8cdad"];'; // Edge color for start transition
-        // accept is higher priority than initial state.
-        if (fsm.acceptStates.indexOf(i.toString()) == -1)
-          initialStatesDotScript += '  node [shape = circle, color="#e8cdad",fontcolor="#e8cdad"]; ' + i + ';'; // Fill and edge colors for regular nodes
-      }
-    }
-
-    return DOTSCRIPTHEADER + initialStatesDotScript + acceptStatesDotScript +
-        initialStatesStartDotScript + transitionDotScript + DOTSCRIPTEND;
+function escapeCharacter(token) {
+  const escapeMap = {
+    ' ': '[space]',
+    '\n': '\\n',
+    '\t': '\\t',
+    '\r': '\\r',
+    '\\': '[\\]'
   };
+  return escapeMap[token] || token;
+}
+
+exports.toDotScript = function (fsm) {
+  const generateTransitions = () => {
+    let transitionDotScript = '  node [shape = circle, color="#e8cdad"];';
+    for (const fromId in fsm.transitions) {
+      for (const toId in fsm.transitions[fromId]) {
+        const label = escapeCharacter(fsm.transitions[fromId][toId]);
+        transitionDotScript += `  ${fromId} -> ${toId} [label="${label}", color="#e8cdad", fontcolor="#e8cdad"];`;
+      }
+    }
+    return transitionDotScript;
+  };
+
+  const generateStates = () => {
+    let initialStatesDotScript = '';
+    let initialStatesStartDotScript = '  node [shape = plaintext];';
+    let acceptStatesDotScript = '';
+
+    for (let i = 0; i < fsm.numOfStates; ++i) {
+      const stateId = i.toString();
+      const isAcceptState = fsm.acceptStates.includes(stateId);
+      const isInitialState = fsm.initialState === stateId;
+
+      if (isAcceptState) {
+        acceptStatesDotScript += `  node [shape = doublecircle, color="#e8cdad", fontcolor="#e8cdad"]; ${stateId};`;
+      }
+
+      if (isInitialState) {
+        initialStatesStartDotScript += `  "" -> ${stateId} [label="start", color="#e8cdad", fontcolor="#e8cdad"];`;
+        if (!isAcceptState) {
+          initialStatesDotScript += `  node [shape = circle, color="#e8cdad", fontcolor="#e8cdad"]; ${stateId};`;
+        }
+      }
+    }
+
+    return { initialStatesDotScript, initialStatesStartDotScript, acceptStatesDotScript };
+  };
+
+  const transitions = generateTransitions();
+  const { initialStatesDotScript, initialStatesStartDotScript, acceptStatesDotScript } = generateStates();
+
+  
+  return `${DOTSCRIPTHEADER}
+  ${initialStatesDotScript}
+  ${acceptStatesDotScript}
+  ${initialStatesStartDotScript}
+  ${transitions}
+  ${DOTSCRIPTEND}`;
+};
