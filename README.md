@@ -5,9 +5,9 @@ A web Application for converting Regular Expressions into Finite State Automata,
 
 Copyright © 2024 TripleThreat
 
-![Kobe Capinpin - Project Manager](https://github.com/VinnRe)
-![Timothy Alimagno - Frontend](https://github.com/mothy-08)
-![Alexander Penuliar - Backend](https://github.com/Exuille)
+[Kobe Capinpin - Project Manager](https://github.com/VinnRe)
+[Timothy Alimagno - Frontend](https://github.com/mothy-08)
+[Alexander Penuliar - Backend](https://github.com/Exuille)
 
 ## Features
 - Login / Signup System
