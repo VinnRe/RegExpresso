@@ -26,9 +26,16 @@ Copyright © 2024 TripleThreat
 
 ## How the Web Application Looks
 
+### Login Page
 ![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/login_page.png)
+
+### Signup Page
 ![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/signup_page.png)
+
+### Home Page
 ![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/home_page.png)
+
+### About Page
 ![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/about_page.png)
 
 -------------
