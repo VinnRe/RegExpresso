@@ -180,7 +180,7 @@ const Home = () => {
                 console.error("Unknown type:", type);
                 return;
             }
-    
+
             console.log("TUPLE GROUP: ", tupleGroup);
             setTupleList(tupleGroup);
         } catch (error) {
@@ -379,34 +379,34 @@ const Home = () => {
 
                         {token ? (
                             <div className="history__wrapper tuple-history__wrapper">
-                            <h2 className="tuple-history__title">History</h2>
-                            <ul className="tuple-history__list">
-                                {allRegex.length > 0 ? (
-                                    allRegex.map(({ regEx, _id }) => (
-                                    <div key={_id} className="history__item-wrapper">
-                                        <li
-                                        className="history__content-list"
-                                        onClick={() => handleHistoryClick(regEx)}
-                                        >
-                                        {regEx}
-                                        </li>
-                                        <button
-                                        className="button__delete-history"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            handleDeleteRegex(_id);
-                                        }}
-                                        >
-                                        Delete
-                                        </button>
-                                    </div>
-                                    ))
-                                ) : (
-                                    <p>No regex found.</p>
-                                )}
+                                <h2 className="tuple-history__title">History</h2>
+                                <ul className="tuple-history__list">
+                                    {allRegex.length > 0 ? (
+                                        allRegex.map(({ regEx, _id }) => (
+                                            <div key={_id} className="history__item-wrapper">
+                                                <li
+                                                    className="history__content-list"
+                                                    onClick={() => handleHistoryClick(regEx)}
+                                                >
+                                                    {regEx}
+                                                </li>
+                                                <button
+                                                    className="button__delete-history"
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleDeleteRegex(_id);
+                                                    }}
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p>No regex found.</p>
+                                    )}
                                 </ul>
-                        </div>
-                        ) : null }
+                            </div>
+                        ) : null}
                     </div>
                 </section>
             ) : (
@@ -415,7 +415,7 @@ const Home = () => {
                         <h2 className="tuple-history__title">5 Tuples</h2>
                         {tupleList ? <TuplesTable tuples={tupleList} /> : <p>No data to display yet...</p>}
                     </div>
-                    
+
                     <div className="home__conversion-wrapper">
                         <div ref={conversionSectionRef} className="home__conversion-display">
                             <h2 className="home__conversion-title">Finite State Automata</h2>
@@ -447,38 +447,38 @@ const Home = () => {
                     <div className="home__tuple-history-section">
                         {token ? (
                             <div className="history__wrapper tuple-history__wrapper">
-                            <h2 className="tuple-history__title">History</h2>
-                            <ul className="tuple-history__list">
-                                {allRegex.length > 0 ? (
-                                    allRegex.map(({ regEx, _id }) => (
-                                    <div key={_id} className="history__item-wrapper">
-                                        <li
-                                        className="history__content-list"
-                                        onClick={() => handleHistoryClick(regEx)}
-                                        >
-                                        {regEx}
-                                        </li>
-                                        <button
-                                        className="button__delete-history"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            handleDeleteRegex(_id);
-                                        }}
-                                        >
-                                        Delete
-                                        </button>
-                                    </div>
-                                    ))
-                                ) : (
-                                    <p>No regex found.</p>
-                                )}
+                                <h2 className="tuple-history__title">History</h2>
+                                <ul className="tuple-history__list">
+                                    {allRegex.length > 0 ? (
+                                        allRegex.map(({ regEx, _id }) => (
+                                            <div key={_id} className="history__item-wrapper">
+                                                <li
+                                                    className="history__content-list"
+                                                    onClick={() => handleHistoryClick(regEx)}
+                                                >
+                                                    {regEx}
+                                                </li>
+                                                <button
+                                                    className="button__delete-history"
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleDeleteRegex(_id);
+                                                    }}
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p>No regex found.</p>
+                                    )}
                                 </ul>
-                        </div>
-                        ) : null }
+                            </div>
+                        ) : null}
                     </div>
                 </section>
             )}
-            
+
             {overlayVisible && (
                 <Overlay onCancel={hideOverlay} />
             )}
