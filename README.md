@@ -33,7 +33,6 @@ Copyright © 2024 TripleThreat
 ![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/signup_page.png)
 
 ### Home Page
-![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/home_page.png)
 
 ### About Page
 ![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/about_page.png)
