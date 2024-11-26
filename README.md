@@ -5,6 +5,10 @@ A web Application for converting Regular Expressions into Finite State Automata,
 
 Copyright © 2024 TripleThreat
 
+![Kobe Capinpin - Project Manager](https://github.com/VinnRe)
+![Timothy Alimagno - Frontend](https://github.com/mothy-08)
+![Alexander Penuliar - Backend](https://github.com/Exuille)
+
 ## Features
 - Login / Signup System
 - Password change of user
@@ -40,7 +44,7 @@ OR
 Then we can open up the web application
 
 `npm run dev`
-
+-------------
 ### Backend Setup
 Open up another cmd terminal or press " CTRL + SHIFT + ` "
 
@@ -71,6 +75,6 @@ After everything is done launch the server
 `npm start`
 
 With all that up and running you can now use the application and try out all the features.
-
+-------------
 
 # Have Fun using our web application!
