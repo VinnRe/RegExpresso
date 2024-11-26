@@ -431,7 +431,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
-	white-space: nowrap;
 	overflow: auto;
 }
 
