@@ -1,5 +1,3 @@
-// export const apiUrl = 'http://localhost:3000'
-
 export const endpoints = {
     login: `/api/user/login`,
     signup: `/api/user/signup`,

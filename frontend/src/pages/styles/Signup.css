@@ -6,7 +6,8 @@
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
-    overflow: auto;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .logoS {

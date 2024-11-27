@@ -8,7 +8,7 @@ const useDotScript = () => {
 
   const fetchDotScript = async (regEx, type) => {
     setLoading(true);
-    setError(null); // Clear previous errors
+    setError(null);
     try {
         if (type == 'NFA') {
             const response = await fetch(endpoints.visualizeNFA, {
