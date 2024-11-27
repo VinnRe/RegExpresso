@@ -1,102 +1,109 @@
 :root {
-  --grad-color-left: #e8cdad;
-  --grad-color-right: #89695D;
+	--grad-color-left: #e8cdad;
+	--grad-color-right: #89695d;
 
-  --clr-white: #fff1e2;
-  --clr-black: #19181879;
+	--clr-white: #fff1e2;
+	--clr-black: #19181879;
 
-  --clr-brown: #573721;
-  --clr-light-brown: #ad724a;
-  --clr-dark-brown: #312117;
-  --clr-brown-btn: #c0a484;
+	--clr-brown: #573721;
+	--clr-light-brown: #ad724a;
+	--clr-dark-brown: #312117;
+	--clr-brown-btn: #c0a484;
 
+	--bg-grd-clr-left: #e8cdad;
+	--bg-grd-clr-right: #89695d;
 
-  --bg-grd-clr-left: #e8cdad;
-  --bg-grd-clr-right: #89695d;
-  
-  --btn-txt-clr: #f1e2d0;
-  --btn-bg-clr-unfocused: #3e241380;
-  --btn-bg-clr-focused: #3d2413;
-  
-  --ipt-txt-clr: #f8f6f3;
-  --ipt-placeholder-clr: #f1e2d0;
-  --ipt-bg-clr-unfocused: #3e24134d;
-  --ipt-bg-clr-focused: #3e24139e;
-  
-  --bg-box-clr: #3d2413;
-  --bg-fsa: #a9876ffe;
+	--btn-txt-clr: #f1e2d0;
+	--btn-bg-clr-unfocused: #3e241380;
+	--btn-bg-clr-focused: #3d2413;
 
-  --ic-clr: #3d2413;
-  --ic-clr-hover: #f1e2d0b3;
-  --txt-clr: #3d2413;
-  --txt-clr-hover: #f1e2d0;
-  
-  --brdr-rad: 10px;
+	--ipt-txt-clr: #f8f6f3;
+	--ipt-placeholder-clr: #f1e2d0;
+	--ipt-bg-clr-unfocused: #3e24134d;
+	--ipt-bg-clr-focused: #3e24139e;
 
-  --outline-clr: #f1e2d0;
-  --outline: 3px solid var(--outline-clr);
+	--bg-box-clr: #3d2413;
+	--bg-fsa: #a9876ffe;
 
-  --transition: color 0.3s ease, background-color 0.3s ease;
+	--ic-clr: #3d2413;
+	--ic-clr-hover: #f1e2d0b3;
+	--txt-clr: #3d2413;
+	--txt-clr-hover: #f1e2d0;
+
+	--brdr-rad: 10px;
+
+	--outline-clr: #f1e2d0;
+	--outline: 3px solid var(--outline-clr);
+
+	--transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 @font-face {
-  font-family: 'Feeling Passionate';
-  src: url(/fonts/Feeling\ Passionate.otf);
+	font-family: "Feeling Passionate";
+	src: url(/fonts/Feeling\ Passionate.otf);
 }
 
 @font-face {
-  font-family: 'Glacial Indifference Regular';
-  src: url(/fonts/GlacialIndifference-Regular.otf);
+	font-family: "Glacial Indifference Regular";
+	src: url(/fonts/GlacialIndifference-Regular.otf);
 }
 
 @font-face {
-  font-family: 'Glacial Indifference Bold';
-  src: url(/fonts/GlacialIndifference-Bold.otf);
+	font-family: "Glacial Indifference Bold";
+	src: url(/fonts/GlacialIndifference-Bold.otf);
 }
 
 @font-face {
-  font-family: 'Glacial Indifference Italic';
-  src: url(/fonts/GlacialIndifference-Italic.otf);
+	font-family: "Glacial Indifference Italic";
+	src: url(/fonts/GlacialIndifference-Italic.otf);
 }
 
 @font-face {
-  font-family: 'Poppins Regular';
-  src: url(./assets/fonts/Poppins-Regular.ttf);
+	font-family: "Poppins Regular";
+	src: url(./assets/fonts/Poppins-Regular.ttf);
 }
 
 @font-face {
-  font-family: 'Poppins Medium';
-  src: url(./assets/fonts/Poppins-Medium.ttf);
+	font-family: "Poppins Medium";
+	src: url(./assets/fonts/Poppins-Medium.ttf);
 }
 
 @font-face {
-  font-family: 'Poppins Bold';
-  src: url(./assets/fonts/Poppins-Bold.ttf);
+	font-family: "Poppins Bold";
+	src: url(./assets/fonts/Poppins-Bold.ttf);
 }
 
 :focus-visible {
-  outline: var(--outline);
+	outline: var(--outline);
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Glacial Indifference Regular';
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Poppins Regular", sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+	width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--clr-light-brown);
-  background: #a9876ffe;
+	background: var(--clr-light-brown);
+	background: #a9876ffe;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--clr-brown);
+	background: var(--clr-brown);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--clr-dark-brown);
+	background: var(--clr-dark-brown);
 }

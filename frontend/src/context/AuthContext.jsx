@@ -11,72 +11,90 @@ export const AuthProvider = ({ children }) => {
         try {
             const response = await fetch(endpoints.login, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password }),
-            })
+            });
 
-            const data = await response.json()
-            console.log("Login Data: ", data)
+            const data = await response.json();
+            console.log("Login Data: ", data);
             if (response.ok) {
-                setToken(data.token)
-                setUser(data.user)
-                localStorage.setItem('token', data.token)
-                return true
+                setToken(data.token);
+                setUser(data.user);
+                localStorage.setItem('token', data.token);
+                return true;
             } else {
-                throw new Error(data.message)
+                throw new Error(data.message);
             }
         } catch (error) {
-            console.error('Login Failed: ', error.message)
-            return false
+            console.error('Login Failed: ', error.message);
+            return false;
         }
-    }
-    
+    };
+
     const handleSignup = async (username, email, password) => {
         try {
             const response = await fetch(endpoints.signup, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, email, password }),
-            })
+            });
 
-            const data = await response.json()
+            const data = await response.json();
             if (response.ok) {
-                setToken(data.token)
-                setUser(data.user)
-                localStorage.setItem('token', data.token)
-                return true
+                setToken(data.token);
+                setUser(data.user);
+                localStorage.setItem('token', data.token);
+                return true;
             } else {
-                throw new Error(data.message)
+                throw new Error(data.message);
             }
         } catch (error) {
-            console.error('Signup Failed: ', error.message)
-            return false
+            console.error('Signup Failed: ', error.message);
+            return false;
         }
-    }
+    };
 
     const handleLogout = async () => {
         try {
-
-            const response = await fetch(endpoints.logout, {
+            await fetch(endpoints.logout, {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${token}` }
-            })
+            });
 
-            setUser(null)
-            setToken(null)
-            localStorage.removeItem('token')
-
+            setUser(null);
+            setToken(null);
+            localStorage.removeItem('token');
         } catch (error) {
-            console.error("Error Logging Out: ", error)
+            console.error("Error Logging Out: ", error);
         }
-    }
+    };
+
+    const checkUsernameExists = async (username) => {
+        try {
+            const response = await fetch(`${endpoints.checkUsername}?username=${username}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                return data.exists;
+            } else {
+                console.error("Failed to check username existence.");
+                return false;
+            }
+        } catch (error) {
+            console.error("Error checking username:", error);
+            return false;
+        }
+    };
 
     return (
-        <AuthContext.Provider value={{ user, token, handleLogin, handleSignup, handleLogout }}>
+        <AuthContext.Provider value={{ user, token, handleLogin, handleSignup, handleLogout, checkUsernameExists }}>
             {children}
         </AuthContext.Provider>
-    )
-}
+    );
+};
 
 export const getUserData = async (token) => {
     if (!token) {
@@ -103,4 +121,4 @@ export const getUserData = async (token) => {
     }
 };
 
-export const useAuth = () => React.useContext(AuthContext)
+export const useAuth = () => React.useContext(AuthContext);

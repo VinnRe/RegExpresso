@@ -1,12 +1,6 @@
 .graph {
+	aspect-ratio: 16 / 9;
 	width: 100%;
-	height: 90%;
 	background-color: var(--btn-bg-clr-unfocused);
 	border-radius: var(--brdr-rad);
-}
-
-@media (width <= 600px) {
-	.graph {
-		height: 80%;
-	}
 }

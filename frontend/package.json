@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/icons-material": "^6.1.8",
+    "@mui/material": "^6.1.8",
     "d3": "^7.9.0",
     "d3-graphviz": "^5.6.0",
     "framer-motion": "^11.11.11",
