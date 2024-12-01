@@ -4,10 +4,10 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position-y: center;
-	width: 100vw;
 	height: 100vh;
 	display: flex;
-	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 	color: var(--clr-dark-brown);
 	overflow: hidden;
 }
@@ -19,6 +19,7 @@
 
 .about__body--right {
 	display: flex;
+	gap: 20px;
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
@@ -27,13 +28,13 @@
 }
 
 .about__body--right h1 {
-	font-size: 6rem;
+	font-size: 5rem;
 	font-family: "Poppins Bold";
 	transition: font-size 0.3s ease-in-out;
 }
 
 .about__body--right p {
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 }
 
 .about__body--right .home__button {
@@ -65,7 +66,7 @@
 	}
 
 	.about__body--right p {
-		font-size: 1.6rem;
+		font-size: 1.2rem;
 	}
 }
 
@@ -75,7 +76,7 @@
 	}
 
 	.about__body--right h1 {
-		font-size: 5rem;
+		font-size: 4rem;
 		margin: 0;
 	}
 
