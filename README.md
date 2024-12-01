@@ -1,6 +1,7 @@
 ![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/src/assets/header_reg_expresso.svg)
 
 # RegExpresso
+
 A web Application for converting Regular Expressions into Finite State Automata, specifically NFA or DFA. Using MongoDB, Express, React, NodeJS (MERN) for the entire web application and D3-graphwiz node_module for the visualization of the converted Regular Expressions.
 
 Copyright © 2024 TripleThreat
@@ -11,9 +12,10 @@ Copyright © 2024 TripleThreat
 
 [Alexander Penuliar - Backend](https://github.com/Exuille)
 
--------------
+---
 
 ## Features
+
 - Login / Signup System
 - Password change of user
 - Conversion of Regular Expression into NFA or DFA
@@ -22,26 +24,32 @@ Copyright © 2024 TripleThreat
 - 5 Tuples Generation
 - History of typed Regular Expressions
 
--------------
+---
 
 ## How the Web Application Looks
 
 ### Login Page
+
 ![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/login_page.png)
 
 ### Signup Page
+
 ![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/signup_page.png)
 
 ### Home Page
+
 ![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/home__page.png)
 
 ### About Page
+
 ![](https://github.com/VinnRe/RegExpresso/blob/main/frontend/public/page_imgs/about_page.png)
 
--------------
+---
 
 ## How to Setup
+
 ### Clone the repository
+
 We are assuming that you are going to use Visual Studio Code (VSCode) and have the at least node v22.11.0 and npm v10.9.0 installed.
 
 Use this url to clone the project
@@ -50,9 +58,10 @@ Use this url to clone the project
 
 Or use the "Open in Github Desktop"
 
--------------
+---
 
 ### Frontend Setup
+
 Open the frontend folder in the CLI
 
 `cd frontend`
@@ -69,9 +78,10 @@ Then we can open up the web application
 
 `npm run dev`
 
--------------
+---
 
 ### Backend Setup
+
 Open up another cmd terminal or press " CTRL + SHIFT + ` "
 
 Open the backend folder in the CLI
@@ -80,7 +90,7 @@ Open the backend folder in the CLI
 
 Once opened, download the required node_modeles by writing
 
-`npm install` 
+`npm install`
 
 OR
 
@@ -102,6 +112,6 @@ After everything is done launch the server
 
 With all that up and running you can now use the application and try out all the features.
 
--------------
+---
 
 # Have Fun using our web application!
