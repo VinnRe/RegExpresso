@@ -1,19 +1,3 @@
-.home__body {
-	font-family: "Poppins Regular";
-	color: var(--txt-clr);
-	background-image: linear-gradient(
-		to right,
-		var(--bg-grd-clr-left),
-		var(--bg-grd-clr-right)
-	);
-}
-
-.home__body * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
 .home__header {
 	position: sticky;
 	top: 0;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Overlay.css';
 import PropTypes from 'prop-types';
 import { endpoints } from '../../config/config';
@@ -22,10 +22,10 @@ const Overlay = ({ onCancel }) => {
                 setErrorMessage('Passwords must more than 8 characters long.');
                 return;
             }
-    
+
             setErrorMessage('');
             console.log('Password change submitted:', newPassword);
-            
+
             const response = await fetch(endpoints.updatePassword, {
                 method: "POST",
                 headers: {
@@ -43,7 +43,7 @@ const Overlay = ({ onCancel }) => {
 
         } catch (error) {
             console.error("Error: ", error)
-            throw error 
+            throw error
         }
 
 

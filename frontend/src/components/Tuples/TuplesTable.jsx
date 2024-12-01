@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import './TuplesTable.css'
 
 const TuplesTable = ({ tuples }) => {
@@ -16,9 +16,9 @@ const TuplesTable = ({ tuples }) => {
             </li>
             <li className="tuple__content-list tuple-transition__content">
                 <span className='tuple__content-title'>Transitions (Δ)</span>
-                <div className="tuple__content">
+                <div >
                     {tuples.Delta.map((transition, index) => (
-                        <div key={index}>
+                        <div className="tuple__content" key={index}>
                             {`(${transition.join(", ")})`}
                         </div>
                     ))}

@@ -1,12 +1,6 @@
 .auth {
-	height: 100vh;
-	background-image: linear-gradient(
-		to right,
-		var(--grad-color-left),
-		var(--grad-color-right)
-	);
+	min-height: 100vh;
 	padding: 1rem;
-	color: var(--txt-clr);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

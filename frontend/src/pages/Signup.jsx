@@ -22,7 +22,7 @@ const Signup = () => {
     const toggleConfirmPasswordVisibility = () => setShowConfirmPassword((prev) => !prev);
 
     const validateEmail = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Standard email regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             setEmailError('Please enter a valid email address.');
         } else {

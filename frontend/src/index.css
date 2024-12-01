@@ -39,26 +39,6 @@
 }
 
 @font-face {
-	font-family: "Feeling Passionate";
-	src: url(/fonts/Feeling\ Passionate.otf);
-}
-
-@font-face {
-	font-family: "Glacial Indifference Regular";
-	src: url(/fonts/GlacialIndifference-Regular.otf);
-}
-
-@font-face {
-	font-family: "Glacial Indifference Bold";
-	src: url(/fonts/GlacialIndifference-Bold.otf);
-}
-
-@font-face {
-	font-family: "Glacial Indifference Italic";
-	src: url(/fonts/GlacialIndifference-Italic.otf);
-}
-
-@font-face {
 	font-family: "Poppins Regular";
 	src: url(./assets/fonts/Poppins-Regular.ttf);
 }
@@ -84,6 +64,15 @@
 	margin: 0;
 	padding: 0;
 	font-family: "Poppins Regular", sans-serif;
+	color: var(--txt-clr);
+}
+
+html {
+	background-image: linear-gradient(
+		to right,
+		var(--bg-grd-clr-left),
+		var(--bg-grd-clr-right)
+	);
 }
 
 a {
