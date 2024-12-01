@@ -14,7 +14,7 @@ const TOKEN_TYPE = {
   REGCHAR: 'a-zA-Z0-9_ \n\t\r',
 };
 
-// Utility function to check if a character is a regular expression character
+// if regex character checker
 function isRegChar(char) {
   return /^[a-zA-Z0-9_ ]$/.test(char);
 }
@@ -36,12 +36,10 @@ class Lexer {
     this.index = 0;
   }
 
-  // Check if there are more tokens to parse
   hasNext() {
     return this.index < this.regString.length;
   }
 
-  // Retrieve the next token
   nextToken() {
     while (this.hasNext()) {
       const currentChar = this.regString[this.index];
@@ -72,13 +70,11 @@ class Lexer {
     return new Token(TOKEN_TYPE.END, 'EOF');
   }
 
-  // Consume the current character and return a token
   _consumeAndReturn(type, text) {
     this._consume();
     return new Token(type, text);
   }
 
-  // Handle escape sequences
   _handleEscapeSequence() {
     if (!this.hasNext()) {
       throw new Error('Expect character after "\\".');
@@ -102,7 +98,6 @@ class Lexer {
     throw new Error(`Invalid escape sequence: \\${escapeChar}`);
   }
 
-  // Increment the index to consume a character
   _consume() {
     this.index++;
   }

@@ -1,8 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require("mongoose");
-const userRoutes = require('./routes/userRoutes.js'); // Corrected path
-const parseRoutes = require('./routes/parseRoutes.js'); // Corrected path
+const userRoutes = require('./routes/userRoutes.js');
+const parseRoutes = require('./routes/parseRoutes.js'); 
 
 const app = express();
 const port = process.env.PORT;
@@ -11,7 +11,6 @@ app.use(express.json());
 app.use("/api/user", userRoutes);
 app.use("/api/parse", parseRoutes);
 
-// Error handling middleware
 app.use((err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
     err.status = err.status || "error";
@@ -23,7 +22,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Start the server
 mongoose.connect(process.env.URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
