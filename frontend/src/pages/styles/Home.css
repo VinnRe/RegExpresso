@@ -376,6 +376,12 @@
 	gap: 5%;
 }
 
+.home__conversion--error {
+	margin-bottom: 1rem;
+	text-align: center;
+	color: var(--txt-clr-err);
+}
+
 .home__tuple-history-section {
 	display: flex;
 	justify-content: center;

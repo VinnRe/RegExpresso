@@ -37,11 +37,11 @@ const useDotScript = () => {
             const data = await response.json();
             setDotScript(data.dotScript); 
         } else {
-            setError(error.message);
+            setError("Error visualizing the regular expression");
             console.error('Error fetching DOT script:', error);
         }
         } catch (error) {
-            setError(error.message);
+            setError("Error visualizing the regular expression");
             console.error('Error fetching DOT script:', error);
         } finally {
             setLoading(false);

@@ -343,6 +343,11 @@ const Home = () => {
                         <div ref={conversionSectionRef} className="home__conversion-display">
                             <h2 className="home__conversion-title">Finite State Automata</h2>
                             <FSMV dotScript={dotScript} />
+                            { error ? (
+                                <div className="home__conversion--error">
+                                    {error}
+                                </div>
+                            ) : null }
                         </div>
 
                         <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
@@ -416,6 +421,11 @@ const Home = () => {
                         <div ref={conversionSectionRef} className="home__conversion-display">
                             <h2 className="home__conversion-title">Finite State Automata</h2>
                             <FSMV dotScript={dotScript} />
+                            { error ? (
+                                <div className="home__conversion--error">
+                                    {error}
+                                </div>
+                            ) : null }
                         </div>
 
                         <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
