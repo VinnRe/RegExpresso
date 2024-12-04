@@ -130,7 +130,7 @@ const Signup = () => {
                         className="material-symbols-outlined auth__toggle-password"
                         onClick={togglePasswordVisibility}
                     >
-                        {showPassword ? 'visibility' : 'visibility_off'}
+                        {showPassword ? 'visibility_off' : 'visibility'}
                     </span>
                 </div>
 
@@ -156,7 +156,7 @@ const Signup = () => {
                         className="material-symbols-outlined auth__toggle-password"
                         onClick={toggleConfirmPasswordVisibility}
                     >
-                        {showConfirmPassword ? 'visibility' : 'visibility_off'}
+                        {showConfirmPassword ? 'visibility_off' : 'visibility'}
                     </span>
                 </div>
 

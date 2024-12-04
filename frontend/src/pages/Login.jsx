@@ -78,7 +78,7 @@ const Login = () => {
                         className="material-symbols-outlined auth__toggle-password"
                         onClick={togglePasswordVisibility}
                     >
-                        {showPassword ? 'visibility' : 'visibility_off'}
+                        {showPassword ? 'visibility_off' : 'visibility'}
                     </span>
                 </div>
 
