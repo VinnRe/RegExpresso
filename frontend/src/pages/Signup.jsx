@@ -16,6 +16,8 @@ const Signup = () => {
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [isWrongCreds, setIsWrongCreds] = useState(false);
+    const [isServerError, setIsServerError] = useState(false);
     const navigate = useNavigate();
 
     const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
@@ -55,17 +57,20 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Prevent submission if there are validation errors
         if (emailError || passwordError || confirmPasswordError) return;
 
         try {
             const isSuccess = await handleSignup(username, email, password);
             if (isSuccess) {
+                setIsServerError(false)
+                setIsWrongCreds(false)
                 navigate('/home');
             } else {
+                setIsWrongCreds(true)
                 console.error('Signup failed. Please check all the fields.');
             }
         } catch (error) {
+            setIsServerError(true)
             console.error('An error occurred. Please try again later.', error);
         }
     };
@@ -159,6 +164,16 @@ const Signup = () => {
                         {showConfirmPassword ? 'visibility_off' : 'visibility'}
                     </span>
                 </div>
+
+                { isWrongCreds ? (
+                        <p className='auth__text auth__text--wrong-creds'>Missing credentials! Please fill all the fields.</p>
+                    ) : null
+                }
+                
+                { isServerError ? (
+                        <p className='auth__text auth__text--wrong-creds'>Oh no! An error occured, please try again later.</p>
+                    ) : null
+                }
 
                 <button
                     className="auth__button auth__button--submit"
