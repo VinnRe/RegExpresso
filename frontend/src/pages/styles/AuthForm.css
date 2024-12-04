@@ -147,6 +147,10 @@
 	color: var(--txt-clr-hover);
 }
 
+.auth__text--wrong-creds {
+	color: var(--txt-clr-err);
+}
+
 @media (width <= 450px) {
 	.auth__form {
 		gap: 0.75rem;

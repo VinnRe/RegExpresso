@@ -11,19 +11,11 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const navigate = useNavigate();
-
     const [showPassword, setShowPassword] = useState(false);
-
+    const [isWrongCreds, setIsWrongCreds] = useState(false);
+    const [isServerError, setIsServerError] = useState(false);
 
     const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
-
-    const validatePassword = (password) => {
-        if (password.length < 8) {
-            setPasswordError('Password must be at least 8 characters long.');
-        } else {
-            setPasswordError('');
-        }
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,11 +23,15 @@ const Login = () => {
             const isSuccess = await handleLogin(username, password);
 
             if (isSuccess) {
+                setIsWrongCreds(false)
+                setIsServerError(false)
                 navigate('/home');
             } else {
+                setIsWrongCreds(true)
                 console.error('Login failed. Please check your credentials.');
             }
         } catch (error) {
+            setIsServerError(true)
             console.error('An error occurred. Please try again later.', error);
         }
     };
@@ -53,7 +49,7 @@ const Login = () => {
                         className="auth__input auth__input--username"
                         value={username}
                         placeholder=" "
-                        onChange={(e) => setUsername(e.target.value)}
+                        onChange={(e) => {setUsername(e.target.value); setIsWrongCreds(false);}}
                     />
                     <label htmlFor='input-username' className="auth__label">Username</label>
                 </div>
@@ -67,7 +63,7 @@ const Login = () => {
                         placeholder=" "
                         onChange={(e) => {
                             setPassword(e.target.value);
-                            validatePassword(e.target.value);
+                            setIsWrongCreds(false);
                         }}
                     />
 
@@ -81,6 +77,16 @@ const Login = () => {
                         {showPassword ? 'visibility_off' : 'visibility'}
                     </span>
                 </div>
+
+                { isWrongCreds ? (
+                        <p className='auth__text auth__text--wrong-creds'>Incorrect credentials! Please try again.</p>
+                    ) : null
+                }
+                
+                { isServerError ? (
+                        <p className='auth__text auth__text--wrong-creds'>Oh no! An error occured, please try again later.</p>
+                    ) : null
+                }
 
                 <button className="auth__button auth__button--submit" disabled={passwordError}>
                     Login
