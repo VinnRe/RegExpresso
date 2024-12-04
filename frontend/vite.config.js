@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:3000', // Proxy API requests to the backend server
+      // '/api': 'http://localhost:3000', // Proxy API requests to the backend server
+      '/api': 'https://reg-expresso-mobile-backend-vercel.vercel.app/', // Proxy API requests to the backend server
     },
   },
 })
