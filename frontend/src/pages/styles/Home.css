@@ -398,6 +398,19 @@
 	gap: 1rem;
 }
 
+.tuple-history__wrapper--null {
+	width: clamp(150px, 20vw, 300px);
+	max-height: 420px;
+	padding: 1.5rem 2rem;
+	border-radius: 30px;
+	background-color: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+}
+
 .tuple-history__wrapper p {
 	font-family: "Poppins Medium", sans-serif;
 	text-align: center;

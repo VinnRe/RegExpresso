@@ -139,7 +139,6 @@ const Home = () => {
                     _id: item._id,
                 }));
                 setAllRegex(regexList);
-                console.log("Fetched regex history:", regexList);
             } catch (error) {
                 console.error("Error fetching regex history:", error);
             }
@@ -181,7 +180,6 @@ const Home = () => {
                 return;
             }
 
-            console.log("TUPLE GROUP: ", tupleGroup);
             setTupleList(tupleGroup);
         } catch (error) {
             console.error("Error fetching tuples: ", error);
@@ -193,7 +191,6 @@ const Home = () => {
         try {
             if (!validateInput()) return;
             await saveRegex(inputValue, token);
-            console.log("REGEX SAVED: ", inputValue)
             await getAllRegex();
         } catch (error) {
             console.error("Error saving regex:", error);
@@ -203,7 +200,6 @@ const Home = () => {
     const handleDeleteRegex = async (regexId) => {
         try {
             await deleteRegex(regexId, token);
-            console.log("Deleted regex with ID:", regexId);
             await getAllRegex();
         } catch (error) {
             console.error("Error deleting regex:", error);
@@ -474,7 +470,9 @@ const Home = () => {
                                     )}
                                 </ul>
                             </div>
-                        ) : null}
+                        ) : (
+                            <div className="history__wrapper tuple-history__wrapper--null"></div>
+                        )}
                     </div>
                 </section>
             )}
