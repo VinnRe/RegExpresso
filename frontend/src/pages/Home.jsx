@@ -21,7 +21,7 @@ const Home = () => {
     const [username, setUsername] = useState('');
     const { handleLogout } = useAuth();
     const token = localStorage.getItem('token')
-    const { dotScript, fetchDotScript, loading, error } = useDotScript();
+    const { dotScript, fetchDotScript, error } = useDotScript();
     const { fetchRegex, saveRegex, deleteRegex } = useRegexOptions();
     const [allRegex, setAllRegex] = useState([]);
     const { getDFATuples, getNFATuples } = useTuples();
@@ -343,11 +343,11 @@ const Home = () => {
                         <div ref={conversionSectionRef} className="home__conversion-display">
                             <h2 className="home__conversion-title">Finite State Automata</h2>
                             <FSMV dotScript={dotScript} />
-                            { error ? (
+                            {error ? (
                                 <div className="home__conversion--error">
                                     {error}
                                 </div>
-                            ) : null }
+                            ) : null}
                         </div>
 
                         <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>
@@ -421,11 +421,11 @@ const Home = () => {
                         <div ref={conversionSectionRef} className="home__conversion-display">
                             <h2 className="home__conversion-title">Finite State Automata</h2>
                             <FSMV dotScript={dotScript} />
-                            { error ? (
+                            {error ? (
                                 <div className="home__conversion--error">
                                     {error}
                                 </div>
-                            ) : null }
+                            ) : null}
                         </div>
 
                         <form autoComplete='off' action="" className="home__form" onSubmit={(e) => e.preventDefault()}>

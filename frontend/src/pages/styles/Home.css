@@ -459,8 +459,9 @@
 }
 
 .history__content-list {
-	width: 100%;
+	max-width: 200px;
 	justify-content: center;
+	overflow-x: hidden;
 }
 
 .history__item-wrapper {
