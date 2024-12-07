@@ -438,10 +438,11 @@
 }
 
 .history__item-wrapper {
-	display: flex;
-	justify-content: space-between;
 	width: 100%;
-	gap: 5px;
+	margin-inline: auto;
+	display: flex;
+	justify-content: center;
+	gap: 8px;
 }
 
 .tuple__content-list,
@@ -459,13 +460,9 @@
 }
 
 .history__content-list {
-	max-width: 200px;
+	width: clamp(150px, 10vw, 200px);
 	justify-content: center;
-	overflow-x: hidden;
-}
-
-.history__item-wrapper {
-	gap: 1rem;
+	overflow: hidden;
 }
 
 .history__content-list {
